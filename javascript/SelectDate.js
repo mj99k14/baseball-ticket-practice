@@ -16,12 +16,15 @@ games.forEach(game=>{
    info.textContent = `${game.date} ${game.time} ${game.home} VS ${game.away}`;
 
     btn.textContent = "예매";
+    btn.addEventListener("click",()=>{
+      location.href='Select-Seat.html'
+      
+    })
 
     item.appendChild(info);
     item.appendChild(btn);
     list.appendChild(item);
 });
-
 
 
 
