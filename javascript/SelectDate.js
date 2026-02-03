@@ -14,9 +14,14 @@ games.forEach(game=>{
     const btn = document.createElement("button");
 
    info.textContent = `${game.date} ${game.time} ${game.home} VS ${game.away}`;
+   
 
     btn.textContent = "예매";
     btn.addEventListener("click",()=>{
+      appState.date =  game.date; // appState -> game저장 
+      appState.time = game.time;
+      appState.home = game.home;
+      appState.away = game.away;
       location.href='Select-Seat.html'
       
     })
