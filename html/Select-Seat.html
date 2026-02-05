@@ -9,8 +9,28 @@
 
 <body>
     <h1>앉을 구역을 선택해 주세요</h1>
+    <div class ="modal" id ="modal">
+        <div class ="modal_popup">
+            <h3>좌석 구역 안내</h3>
+            <br>
+            
+            <strong>내야석</strong>
+            - 경기장이 가깝습니다<br>
+            - 요금이 조금 더 높습니다<br>
+        <br><br>
+
+            
+            <strong>외야석</strong>
+            - 경기장이 조금 멀어요<br>
+            - 요금이 저렴합니다<br>
+            <br><br>
+            ※ 좌석을 고르면 요금은 자동으로 적용됩니다
+            </p>
+            <button type ="button" class="close_btn" id="close_btn">닫기</button>
+        </div>
+    </div>
     <img src="./seat.png">
-    <a href="Select-Seat.html">
+    <a href="Select-Seat-area.html">
         <button id="firstbase">1루 내야석(홈팀)</button>
     </a>
     <a href="Select-Seat-area.html">
@@ -19,16 +39,42 @@
     <a href="Select-Seat-area.html">
         <button id=outfieldseats>외야석</button>
     </a>
+    <!-- state.js 로딩 -->
+    <script src="../javascript/state.js"></script>
     <script>
         //5초간 안내문 공자(좌석 구역 안내)
+        const modal = document.getElementById("modal");
+        //강제로 보이게
+        modal.style.display = "flex";
+        const closeBtn =document.getElementById("close_btn");
 
-//1루 내야석  
-    //선택시 window.appState.price에 14000원 
-//3루 내야석 
-    //선택시 window.appState.price에 14000원 
-//외야석 
-    //선택시 window.appState.price에 8000원 
+        closeBtn.addEventListener("click",(event) =>{
+            //없앰
+             modal.style.display = "none";
+            
+        })
 
+        //1루 내야석  
+              //선택시 window.appState.price에 14000원 
+        firstbase.addEventListener("click",(event) => {
+            //event.preventDefault(); // 페이지 로딩 멈춤
+            appState.price = 14000;
+            console.log(appState.price);
+         
+        });
+          
+        //3루 내야석 
+            //선택시 window.appState.price에 14000원 
+        Thirdbase.addEventListener("click",(event) => {
+          appState.price = 14000;
+       
+        });
+        //외야석 
+            //선택시 window.appState.price에 8000원 
+        outfieldseats.addEventListener("click", (event) => {
+           appState.price = 14000;
+
+        });
 
 
     </script>

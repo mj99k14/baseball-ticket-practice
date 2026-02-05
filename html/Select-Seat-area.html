@@ -5,20 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #grid {
+  display: grid;
+  grid-template-columns: repeat(5, 40px); /* 5칸 */
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* 좌석 하나 */
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0; /* 기본 좌석 */
+  border: 1px solid #999;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+</style>
 <body>
     <h1>앉을 구역을 선택해 주세요</h1>
-        <img src="./seat.png">
-        <a href ="Select-Seat.html">
-    <button id="firstbase">1루 내야석(홈팀)</button>
-        </a>
-        <a href="Select-Seat-area.html">
-        <button id =Thirdbase>3루 내야석 (원정팀)</button>
-        </a>
-        <a href="Select-Seat-area.html">
-        <button id =outfieldseats>외야석</button>
-        </a>
-<script>
+    <!-- 5 * 5 그리드 생성-->
+     <div id ="grid"></div>
 
-</script>
+  
+
+
+<script src="../javascript/SelectSeat.js"></script>
+
 </body>
 </html>
+

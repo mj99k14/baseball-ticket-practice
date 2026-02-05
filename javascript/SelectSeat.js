@@ -1,21 +1,49 @@
 //좌석 5*5 를 두판 생성 50 
-//랜덤 생성
-    // 선택 가능한 자석 
-    // 선택 불가 자석
-    // 선택한 자석
+//행
+const ROWS = 5;
+//열
+const COLS = 5;
+//자석 
+const seat = 25;
+//그리드 컨테이너
+const grid = document.getElementById('grid');
+// function creatSeat(){
+//     for (let i = 0 ; i < (ROWS * COLS); i++){
+//         const div = document.createElement("div");
+//         div.className = "seat";
+//         grid.appendChild(div);
+//         console.log(grid);
+//     }
+// }
 
 
-// 사용자가 선택 가능한 자석을 누른경우
-    //4장이상일경우
-    //좌선 선택 완료를 누를경우
-        //arlat(최대 4매 까지 예약가능합니다)
-    // 4장 미만일 경우
-        //appState.seats에 저장 
-        // 선택한 자석 색깔 변경
+// creatSeat();
 
-//선택 불가 자석은 누른 경우
-    // alrat("현재자석은 예약 완료 자석입니다")
+//상태 결정함수
+function SeatCondition(){
 
+    const random = Math.random();
+    //확률
+    if(random < 0.2){
+        return "disabled";
+    }else{
+        return"selectable";
+    }
+
+}
+
+function createSeat() {
+  for (let i = 0; i < ROWS * COLS; i++) {
+    const seat = document.createElement("div");
+
+    seat.classList.add("seat");
+    seat.classList.add(SeatCondition());
+
+    grid.appendChild(seat);
+  }
+}
+
+createSeat();
 
 
 //예외처리 
