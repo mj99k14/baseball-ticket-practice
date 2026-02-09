@@ -9,11 +9,24 @@ const TOTAL_SEATS = 25;
 const grid = document.getElementById('grid');
 const seatCount = document.getElementById("seat-count");
 
+//로딩 되면서 자석 몇자리인지 확인 로직
+window.onload = function (){
+    selectCompletion.addEventListener("click",()=>{
+        // 자리 한개도 선택 안하면 
+    if(appState.seats.length < 1){
+       //버튼 비활성화
+       
+       document.getElementById("selectCompletion").disabled = true;
+       
 
+    }else{
+           location.href = 'Seat-price.html';
+    }
+});
+} 
 
 //상태 결정함수
 function SeatCondition(){
-
     const random = Math.random();
     //확률
     if(random < 0.2){
@@ -23,7 +36,6 @@ function SeatCondition(){
         //선택 가능
         return"selectable";
     }
-
 }
 
 function createSeat() {
@@ -115,7 +127,3 @@ function seatcolorchange(seat){
  }
 
 
-//좌석 선택 완료
-fun
-//좌석이 한칸 이상이 되어야 다음페이지 넘어가기
-//한칸도 선택안되면 선택해주세요 
