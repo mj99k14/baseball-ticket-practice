@@ -20,7 +20,7 @@ window.onload = function (){
        
 
     }else{
-           location.href = 'Seat-price.html';
+           location.href = 'Seat-check-price.html';
     }
 });
 } 
