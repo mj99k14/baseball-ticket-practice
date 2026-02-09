@@ -1,59 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>좌석 선택 - 야구 예매</title>
+  <link rel="stylesheet" href="../css/area-seat.css">
 </head>
-<style>
-    #grid {
-  display: grid;
-  grid-template-columns: repeat(5, 40px); /* 5칸 */
-  gap: 8px;
-  margin-top: 20px;
-}
 
-/* 좌석 하나 */
-.seat {
-  width: 40px;
-  height: 40px;
-  background-color: #e0e0e0; /* 기본 좌석 */
-  border: 1px solid #999;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-}
-
-.seat.selectable {
-  background-color: #e0e0e0; /* 기본 */
-}
-
-.seat.selected {
-  background-color: blue;   /* 선택됨 */
-}
-
-.seat.disabled {
-  background-color: orange; /* 선택 불가 */
-  cursor: not-allowed;
-}
-
-</style>
 <body>
-    <h1>앉을 구역을 선택해 주세요</h1>
-    <!-- 5 * 5 그리드 생성-->
-     <div id ="grid"></div>
-     <button id = "back" onclick ="location.href='Select-Seat.html';">이전으로</button>
-     <button id = "selectCompletion">좌석 선택 완료</button>
-    <button id="newSelect">좌석 다시 선택</button>
+  <h1>원하는 좌석을 눌러주세요</h1>
 
-  
-  
+  <div class="legend">
+    <div class="legend-item">
+      <div class="box" style="background:#1aafff;"></div> 선택함
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background:#ff7b1a;"></div> 선택불가
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background:#d1d1d1;"></div> 선택가능
+    </div>
+  </div>
 
-<script src="../javascript/SelectSeat.js"></script>
+  <div class="main-container">
+    <div id="grid"></div>
 
+    <div class="sidebar">
+      <div class="logo-area">
+        <img src="./baseballlog.png" alt="구단 로고">
+      </div>
+
+      <div class="nav-info" onclick="location.href='Select-Seat-area.html'">〈 이전으로</div>
+
+      <div class="status-area">
+        <h3>선택한 좌석</h3>
+        <div id="seat-count">좌석을 선택해 주세요</div>
+      </div>
+
+      <div class="btn-group">
+        <button id="selectCompletion">좌석 선택 완료</button>
+        <div class="bottom-btns">
+          <button onclick="location.href='Select-Seat-area.html'">이전단계</button>
+          <button onclick="window.location.reload()">다시 선택</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../javascript/state.js"></script>
+  <script src="../javascript/SelectSeat.js"></script>
 </body>
-</html>
 
+</html>

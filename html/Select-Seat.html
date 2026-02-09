@@ -1,82 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>구역 선택</title>
+    <link rel="stylesheet" href="../css/area.css">
 </head>
 
 <body>
-    <h1>앉을 구역을 선택해 주세요</h1>
-    <div class ="modal" id ="modal">
-        <div class ="modal_popup">
-            <h3>좌석 구역 안내</h3>
-            <br>
-            
-            <strong>내야석</strong>
-            - 경기장이 가깝습니다<br>
-            - 요금이 조금 더 높습니다<br>
-        <br><br>
+    <div class="header-container">
+        <button id="back" onclick="location.href='Select-date.html';">← 뒤로가기</button>
+    </div>
 
-            
-            <strong>외야석</strong>
-            - 경기장이 조금 멀어요<br>
-            - 요금이 저렴합니다<br>
-            <br><br>
-            ※ 좌석을 고르면 요금은 자동으로 적용됩니다
-            </p>
-            <button type ="button" class="close_btn" id="close_btn">닫기</button>
+    <h1>앉을 구역을 선택해 주세요</h1>
+
+    <div class="modal" id="modal">
+        <div class="modal_popup">
+            <h3>좌석 구역 안내</h3>
+            <p><strong>내야석</strong>: 경기장이 가깝고 요금이 높습니다.</p>
+            <p><strong>외야석</strong>: 경기장이 멀지만 요금이 저렴합니다.</p>
+            <div style="color: #666; font-weight: bold; font-size: 1.4rem; margin-top: 20px;">
+                ※ 좌석을 고르면 요금은 자동으로 적용됩니다.
+            </div>
+            <button type="button" class="close_btn" id="close_btn">확인했습니다</button>
         </div>
     </div>
-    <img src="./seat.png">
-    <a href="Select-Seat-area.html">
-        <button id="firstbase">1루 내야석(홈팀)</button>
-    </a>
-    <a href="Select-Seat-area.html">
-        <button id=Thirdbase>3루 내야석 (원정팀)</button>
-    </a>
-    <a href="Select-Seat-area.html">
-        <button id=outfieldseats>외야석</button>
-    </a>
-    <!-- state.js 로딩 -->
+
+    <div class="main-content">
+        <div class="image-area">
+            <img src="./seat.png" alt="좌석 배치도">
+        </div>
+
+        <div class="button-container">
+            <button id="firstbase">1루 내야석 (홈)</button>
+            <button id="Thirdbase">3루 내야석 (원정)</button>
+            <button id="outfieldseats">외야석 (자유)</button>
+        </div>
+    </div>
+
     <script src="../javascript/state.js"></script>
     <script>
-        //5초간 안내문 공자(좌석 구역 안내)
-        const modal = document.getElementById("modal");
-        //강제로 보이게
-        modal.style.display = "flex";
-        const closeBtn =document.getElementById("close_btn");
+      // 페이지가 완전히 다 불러와진 후에 실행합니다.
+        window.onload = function () {
+            const modal = document.getElementById("modal");
+            const closeBtn = document.getElementById("close_btn");
 
-        closeBtn.addEventListener("click",(event) =>{
-            //없앰
-             modal.style.display = "none";
-            
-        })
+            // 1. 모달 띄우기 (만약 요소가 있으면 실행)
+            if (modal) {
+                modal.style.display = "flex";
+                console.log("모달이 정상적으로 표시되었습니다.");
+            } else {
+                console.error("아이디가 'modal'인 요소를 찾을 수 없습니다.");
+            }
 
-        //1루 내야석  
-              //선택시 window.appState.price에 14000원 
-        firstbase.addEventListener("click",(event) => {
-            //event.preventDefault(); // 페이지 로딩 멈춤
-            appState.price = 14000;
-            console.log(appState.price);
-         
-        });
-          
-        //3루 내야석 
-            //선택시 window.appState.price에 14000원 
-        Thirdbase.addEventListener("click",(event) => {
-          appState.price = 14000;
-       
-        });
-        //외야석 
-            //선택시 window.appState.price에 8000원 
-        outfieldseats.addEventListener("click", (event) => {
-           appState.price = 14000;
+            // 2. 닫기 버튼 클릭 이벤트
+            if (closeBtn) {
+                closeBtn.onclick = () => {
+                    modal.style.display = "none";
+                };
+            }
 
-        });
+            // 3. 버튼 클릭 시 금액 저장 및 페이지 이동 함수
+            const moveNext = (price) => {
+                // appState가 정의되어 있는지 확인 후 저장
+                if (typeof appState !== 'undefined') {
+                    appState.price = price;
+                    location.href = 'Select-Seat-area.html';
+                } else {
+                    alert("상태 저장 파일(state.js)을 불러오지 못했습니다.");
+                }
+            };
 
-
+            // 각 구역 버튼 이벤트 연결
+            document.getElementById("firstbase").onclick = () => moveNext(14000);
+            document.getElementById("Thirdbase").onclick = () => moveNext(14000);
+            document.getElementById("outfieldseats").onclick = () => moveNext(8000);
+        };
     </script>
 </body>
 

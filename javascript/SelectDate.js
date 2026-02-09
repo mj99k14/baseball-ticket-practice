@@ -8,26 +8,28 @@ const games = [
 
 const list = document.getElementById('game-list');
 
-games.forEach(game=>{
+games.forEach(game => {
     const item = document.createElement("div");
-    const info = document.createElement("div");
-    const btn = document.createElement("button");
+    item.classList.add("game-item");
 
-   info.textContent = `${game.date} ${game.time} ${game.home} VS ${game.away}`;
-   
+    // 정보를 날짜/시간과 팀명으로 분리해서 생성
+    item.innerHTML = `
+        <div class="game-info">
+            <div class="game-date-time">${game.date} <span style="font-size: 1.4rem;">${game.time}</span></div>
+            <div class="game-teams">${game.home} VS ${game.away}</div>
+        </div>
+        <button class="res-button">예매</button>
+    `;
 
-    btn.textContent = "예매";
-    btn.addEventListener("click",()=>{
-      appState.date =  game.date; // appState -> game저장 
-      appState.time = game.time;
-      appState.home = game.home;
-      appState.away = game.away;
-      location.href='Select-Seat.html'
-      
-    })
+    // 어르신들은 버튼뿐만 아니라 '카드 전체'를 눌러도 이동되는 것이 훨씬 편합니다.
+    item.addEventListener("click", () => {
+        appState.date = game.date;
+        appState.time = game.time;
+        appState.home = game.home;
+        appState.away = game.away;
+        location.href = 'Select-Seat.html';
+    });
 
-    item.appendChild(info);
-    item.appendChild(btn);
     list.appendChild(item);
 });
 

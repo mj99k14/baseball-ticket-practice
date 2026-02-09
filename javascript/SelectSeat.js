@@ -7,6 +7,9 @@ const COLS = 5;
 const TOTAL_SEATS = 25;
 //그리드 컨테이너
 const grid = document.getElementById('grid');
+const seatCount = document.getElementById("seat-count");
+
+
 
 //상태 결정함수
 function SeatCondition(){
@@ -60,9 +63,13 @@ function seatcolorchange(seat){
             seat.classList.remove("selectable");
             seat.classList.add("selected");
             count ++; // 카운트 추가
-            
+            appState.seats.push(seat);   // 좌석 저장
             alert("선택되었습니다.");
             console.log(seat.classList.contains("selected"));
+             //총 자석 
+            seatCount.textContent = `총 ${appState.seats.length}석`;
+     
+
         }
         else{
             alert("최대 4매까지 가능합니다 ");
@@ -96,16 +103,19 @@ function seatcolorchange(seat){
         count --;
 
     }
+    // 선택된 자석 수 뼤기
+    const idx = appState.seats.indexOf(seat);
+    if(idx !== -1){
+        appState.seats.splice(idx,1);
+
+    }
+    seatCount.textContent = `총 ${appState.seats.length}석`;
     
     
  }
 
 
-//예외처리 
-    //이전단계 클릭경우
-        //Select-seat-area.html로
-              //appState.seats 리셋
-              //appState.price 리셋
-    //좌석 다시 선택 클릭 경우
-        // 새로고침되도록
-         //appState.seats 리셋
+//좌석 선택 완료
+fun
+//좌석이 한칸 이상이 되어야 다음페이지 넘어가기
+//한칸도 선택안되면 선택해주세요 
