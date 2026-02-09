@@ -1,0 +1,190 @@
+/* [1] 전체 레이아웃 */
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    /* 어르신들이 읽기 편한 굵고 명확한 폰트 */
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* [2] 상단 뒤로가기 버튼 영역 */
+.header-container {
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 20px;
+}
+
+#back {
+    background: white;
+    border: 3px solid #000;
+    padding: 10px 40px;
+    /* 더 누르기 쉽게 가로폭 확대 */
+    font-size: 1.8rem;
+    /* 글자 크기 확대 */
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 3.5rem;
+    /* 더 크게 */
+    color: #072b61;
+    margin-bottom: 40px;
+    font-weight: 900;
+}
+
+/* [3] 메인 컨텐츠 영역: 이미지(좌)와 버튼(우) 가로 정렬 */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    /* 이미지와 버튼 사이 간격 넉넉히 */
+    width: 100%;
+    max-width: 1300px;
+}
+
+/* 좌석 이미지 스타일 */
+img {
+    flex: 1.5;
+    /* 이미지를 조금 더 크게 */
+    max-width: 700px;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border: 10px solid white;
+    /* 액자 느낌 강조 */
+}
+
+/* 버튼 모음 영역 */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;
+    max-width: 450px;
+}
+
+/* 구역 선택 버튼 공통 스타일 (크기 통일) */
+.button-container button {
+    width: 100%;
+    height: 130px;
+    /* 높이를 더 키워 누르기 쉽게 */
+    font-size: 2.5rem;
+    /* 왕글씨 적용 */
+    font-weight: 900;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.1s;
+    box-shadow: 0 12px 0 #888;
+    /* 입체감 강화 */
+}
+
+/* 버튼 클릭 효과 */
+.button-container button:active {
+    transform: translateY(10px);
+    box-shadow: 0 2px 0 #888;
+}
+
+/* 버튼별 포인트 컬러 */
+#firstbase {
+    background-color: #d90000;
+    color: white;
+    box-shadow: 0 12px 0 #900;
+}
+
+#Thirdbase {
+    background-color: #002d72;
+    color: white;
+    box-shadow: 0 12px 0 #001a43;
+}
+
+#outfieldseats {
+    background-color: #007a33;
+    color: white;
+    box-shadow: 0 12px 0 #004d20;
+}
+
+/* [4] 모달(팝업) 디자인 - 어르신들이 집중할 수 있도록 고대비 적용 */
+.modal {
+    display: none;
+    /* 초기 상태 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* 배경을 더 어둡게 */
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_popup {
+    background-color: white;
+    width: 90%;
+    max-width: 650px;
+    padding: 50px;
+    border-radius: 40px;
+    text-align: left;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal_popup h3 {
+    font-size: 3rem;
+    color: #072b61;
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 5px solid #f0f2f5;
+    padding-bottom: 20px;
+}
+
+.modal_popup p {
+    font-size: 2rem;
+    /* 안내 문구 크게 */
+    line-height: 1.8;
+    margin: 25px 0;
+}
+
+.modal_popup strong {
+    color: #d90000;
+    font-size: 2.2rem;
+}
+
+/* 팝업 닫기 버튼 */
+.close_btn {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 30px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 10px 0 #333;
+}
+
+/* [5] 반응형 설정 (화면이 좁아지면 세로로 배치) */
+@media (max-width: 1000px) {
+    .main-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    img {
+        width: 95%;
+    }
+
+    .button-container {
+        max-width: 95%;
+    }
+}
