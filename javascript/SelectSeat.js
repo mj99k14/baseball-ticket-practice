@@ -1,129 +1,111 @@
-//좌석 5*5 를 두판 생성 50 
-//행
+// 1. 공통 설정
 const ROWS = 5;
-//열
 const COLS = 5;
-//자석 
 const TOTAL_SEATS = 25;
-//그리드 컨테이너
-const grid = document.getElementById('grid');
-const seatCount = document.getElementById("seat-count");
 
-//로딩 되면서 자석 몇자리인지 확인 로직
-window.onload = function (){
-    selectCompletion.addEventListener("click",()=>{
-        // 자리 한개도 선택 안하면 
-    if(appState.seats.length < 1){
-       //버튼 비활성화
-       
-       document.getElementById("selectCompletion").disabled = true;
-       
-
-    }else{
-           location.href = 'Seat-check-price.html';
-    }
-});
-} 
-
-//상태 결정함수
-function SeatCondition(){
-    const random = Math.random();
-    //확률
-    if(random < 0.2){
-        //선택 불가
-        return "disabled";
-    }else{
-        //선택 가능
-        return"selectable";
-    }
-}
-
-function createSeat() {
-  for (let i = 0; i <TOTAL_SEATS; i++) {
-    //요소 만듬
-    const seat = document.createElement("div");
-    // id 뒤에 seat를 붙침
-    seat.classList.add("seat");
-    // 그다음에 seatcondition을 랜덤으로 붙침
-
-    seat.classList.add(SeatCondition());
-    //grid에 생성된 랜덤 자리를 붙침
-    grid.appendChild(seat);
-    
-    //좌석 상태 변화 함수 호출
-    seatcolorchange(seat);
-
-  }
-}
-
-createSeat();
+// 전역 변수 선언 (함수 밖에서 선언해야 모든 함수가 공유 가능합니다)
+let grid;
+let seatCount;
 let count = 0;
-// 클릭좌서상태 변화
-function seatcolorchange(seat){
-    
-  seat.addEventListener("click", () =>{
-    //이좌석이 disabled 상태인지확인
-    //contains -> 그안 에 뭐가 들어있는지?
-    if(seat.classList.contains("disabled")){
-        alert("선택 불가 좌석입니다!");
-        return;
-    } else if (seat.classList.contains("selectable")){
 
-        // 카운트가 4 미만일경우 
-        console.log(count)
-        if(count < 4){
-            seat.classList.remove("selectable");
-            seat.classList.add("selected");
-            count ++; // 카운트 추가
-            appState.seats.push(seat);   // 좌석 저장
-            alert("선택되었습니다.");
-            console.log(seat.classList.contains("selected"));
-             //총 자석 
-            seatCount.textContent = `총 ${appState.seats.length}석`;
-     
+// 페이지 로딩 후 실행
+document.addEventListener("DOMContentLoaded", function () {
 
-        }
-        else{
-            alert("최대 4매까지 가능합니다 ");
-        }
 
-    }else if (seat.classList.contains("selected")){
-        
-        alertnc(seat);
+    // 2. HTML 요소 가져오기 (HTML 파일의 ID와 정확히 일치해야 합니다)
+    const selectCompletion = document.getElementById("selectCompletion");
+    grid = document.getElementById('grid');
+    seatCount = document.getElementById("seat-count");
+
+    console.log("grid 요소:", document.getElementById('grid'));
+    console.log("버튼 요소:", document.getElementById('selectCompletion'));
+    console.log("카운트 요소:", document.getElementById('seat-count'));
+
+    // [체크] 만약 요소를 못 찾았다면 콘솔에 에러를 띄웁니다.
+    if (!grid || !selectCompletion || !seatCount) {
+        console.error("HTML 요소를 찾을 수 없습니다. ID를 확인해 주세요!");
+        return; // 에러가 있으면 여기서 중단
     }
-  });
- }
 
+    // 좌석 생성 함수 호출
+    createSeat();
 
+    // 완료 버튼 클릭 이벤트
+    selectCompletion.addEventListener("click", () => {
+        // appState는 state.js에 정의되어 있어야 합니다.
+        if (!window.appState || appState.seats.length < 1) {
+            alert("먼저 좌석을 선택해주세요");
+        } else {
+            //필요한 정보 저장
+            localStorage.setItem("selectedSeatCount", appState.seats.length);
+            location.href = 'Seat-check-price.html';
+        }
+    });
+});
 
-//상태가 바꾸면 
-//색상은 직접 바꾸지않고 CLASS변경을 통해 CSS가 알아서 바뀌게 함
+// 좌석 상태 결정 (랜덤)
+function SeatCondition() {
+    return Math.random() < 0.2 ? "disabled" : "selectable";
+}
 
+// 좌석 생성 함수
+function createSeat() {
+    for (let i = 0; i < TOTAL_SEATS; i++) {
+        const seat = document.createElement("div");
+        seat.classList.add("seat");
+        seat.classList.add(SeatCondition());
+        
+        // grid 변수가 DOMContentLoaded 안에서 할당된 후 사용됩니다.
+        grid.appendChild(seat);
+        
+        seatcolorchange(seat);
+    }
+}
 
+// 클릭 시 좌석 상태 변화
+function seatcolorchange(seat) {
+    seat.addEventListener("click", () => {
+        if (seat.classList.contains("disabled")) {
+            alert("선택 불가 좌석입니다!");
+            return;
+        }
 
+        if (seat.classList.contains("selectable")) {
+            if (count < 4) {
+                seat.classList.remove("selectable");
+                seat.classList.add("selected");
+                count++;
+                
+                // state.js의 appState 배열에 추가
+                if (window.appState) appState.seats.push(seat);
+                console.log(appState.seats)
+                
+                alert("선택되었습니다.");
+                seatCount.textContent = `총 ${appState.seats.length}석`;
+            } else {
+                alert("최대 4매까지 가능합니다");
+            }
+        } else if (seat.classList.contains("selected")) {
+            alertnc(seat);
+        }
+    });
+}
 
- function alertnc(seat){
-    //이미 선택된 좌석을 다시 클릭한 경우라면
-    // 선택 해제인지 경고
-    //취소면  selectable 
-    //아니면 그대로
-
-    if(confirm("선택하신 자석입니다. 자석 취소할까요?")){
-        alert('취소되었습니다');
+// 좌석 취소 함수
+function alertnc(seat) {
+    if (confirm("선택하신 좌석입니다. 취소할까요?")) {
         seat.classList.remove("selected");
         seat.classList.add("selectable");
-        count --;
-
+        
+        if (window.appState) {
+            const idx = appState.seats.indexOf(seat);
+            if (idx !== -1) {
+                appState.seats.splice(idx, 1);
+                count--;
+            }
+        }
+        
+        alert('취소되었습니다');
+        seatCount.textContent = appState.seats.length > 0 ? `총 ${appState.seats.length}석` : "좌석을 선택해 주세요";
     }
-    // 선택된 자석 수 뼤기
-    const idx = appState.seats.indexOf(seat);
-    if(idx !== -1){
-        appState.seats.splice(idx,1);
-
-    }
-    seatCount.textContent = `총 ${appState.seats.length}석`;
-    
-    
- }
-
-
+}
