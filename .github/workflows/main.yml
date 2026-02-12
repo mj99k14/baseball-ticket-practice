@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  lint-and-validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,5 +14,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      - name: Run ESLint for JavaScript
+        run: npm run lint
+
+      - name: Run HTML Validator
+        run: npm run validate-html
