@@ -1,0 +1,25 @@
+{
+  "name": "@baseball/baseball-project",
+  "version": "1.0.0",
+  "description": "\"# baseball-ticket-practice\"",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint javascript/",
+    "validate-html": "html-validator --file=./html/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mj99k14/baseball-ticket-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mj99k14/baseball-ticket-practice/issues"
+  },
+  "homepage": "https://github.com/mj99k14/baseball-ticket-practice#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "html-validator-cli": "^7.0.1"
+  }
+}
