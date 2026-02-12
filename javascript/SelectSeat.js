@@ -1,7 +1,7 @@
 // 1. 공통 설정
 const ROWS = 5;
 const COLS = 5;
-const TOTAL_SEATS = 25;
+const TOTAL_SEATS = ROWS * COLS;
 
 // 전역 변수 선언 (함수 밖에서 선언해야 모든 함수가 공유 가능합니다)
 let grid;

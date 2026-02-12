@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint javascript/",
-    "validate-html": "html-validator --file ./html/*.html"
+    "validate-html": "for file in ./html/*.html; do html-validator --file \"$file\"; done"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mj99k14/baseball-ticket-practice#readme",
   "devDependencies": {
-    "eslint": "^8.57.1",
+    "eslint": "^9.0.0",
     "html-validator-cli": "^7.0.1"
   }
 }
