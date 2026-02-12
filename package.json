@@ -4,7 +4,7 @@
   "description": "# baseball-ticket-practice",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint javascript/",
+    "lint": "npx eslint javascript/",
     "validate-html": "for file in ./html/*.html; do html-validator --file \"$file\"; done"
   },
   "repository": {
