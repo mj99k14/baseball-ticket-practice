@@ -1,11 +1,11 @@
 {
   "name": "@baseball/baseball-project",
   "version": "1.0.0",
-  "description": "\"# baseball-ticket-practice\"",
+  "description": "# baseball-ticket-practice",
   "main": "index.js",
   "scripts": {
     "lint": "eslint javascript/",
-    "validate-html": "html-validator --file=./html/*.html"
+    "validate-html": "html-validator --file ./html/*.html"
   },
   "repository": {
     "type": "git",
