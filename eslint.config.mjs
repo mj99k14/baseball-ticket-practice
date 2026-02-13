@@ -9,9 +9,9 @@ export default defineConfig([
     languageOptions: {
       globals: {
         ...globals.browser,
-        appState: true
-      }
-    }
+        appState: true,
+      },
+    },
   },
   { files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
 ]);

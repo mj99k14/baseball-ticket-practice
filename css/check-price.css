@@ -1,84 +1,82 @@
+/* 1. 기본 설정: 글자를 큼직하게 */
+body {
+  font-family: "Malgun Gothic", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
 
-   /* 1. 기본 설정: 글자를 큼직하게 */
-   body {
-       font-family: 'Malgun Gothic', sans-serif;
-       margin: 0;
-       padding: 0;
-       background-color: #f4f4f4;
-   }
+/* 2. 네비게이션 바: 창 너비에 꽉 차게 */
+.navbar_ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  /* 화면 꽉 채우기 */
+  background-color: #dcdcdc;
+  /* 대비를 위한 약간 진한 회색 */
+  border-bottom: 2px solid #ccc;
+}
 
-   /* 2. 네비게이션 바: 창 너비에 꽉 차게 */
-   .navbar_ul {
-       display: flex;
-       list-style: none;
-       padding: 0;
-       margin: 0;
-       width: 100%;
-       /* 화면 꽉 채우기 */
-       background-color: #dcdcdc;
-       /* 대비를 위한 약간 진한 회색 */
-       border-bottom: 2px solid #ccc;
-   }
+/* 3. 각 단계: 균등하게 배분 */
+.navbar_ul li {
+  flex: 1;
+  /* 모든 칸을 동일한 너비로 */
+  text-align: center;
+}
 
-   /* 3. 각 단계: 균등하게 배분 */
-   .navbar_ul li {
-       flex: 1;
-       /* 모든 칸을 동일한 너비로 */
-       text-align: center;
-   }
+/* 4. 링크 스타일: 클릭 영역을 크게 */
+.navbar_ul li a {
+  display: block;
+  padding: 25px 10px;
+  /* 위아래로 넓게 벌려서 터치하기 쉽게 */
+  font-size: 1.5rem;
+  /* 글자 크게 (기본의 1.5배) */
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  word-break: keep-all;
+  /* 단어가 잘리지 않게 */
+}
 
-   /* 4. 링크 스타일: 클릭 영역을 크게 */
-   .navbar_ul li a {
-       display: block;
-       padding: 25px 10px;
-       /* 위아래로 넓게 벌려서 터치하기 쉽게 */
-       font-size: 1.5rem;
-       /* 글자 크게 (기본의 1.5배) */
-       font-weight: bold;
-       color: #333;
-       text-decoration: none;
-       word-break: keep-all;
-       /* 단어가 잘리지 않게 */
-   }
+/* 5. 현재 단계 강조 (빨간색) */
+.navbar_ul li.active {
+  background-color: #ff4d4d;
+  /* 눈에 잘 띄는 선명한 빨강 */
+}
 
-   /* 5. 현재 단계 강조 (빨간색) */
-   .navbar_ul li.active {
-       background-color: #ff4d4d;
-       /* 눈에 잘 띄는 선명한 빨강 */
-   }
+.navbar_ul li.active a {
+  color: white;
+  /* 빨간 배경엔 흰색 글자 */
+}
 
-   .navbar_ul li.active a {
-       color: white;
-       /* 빨간 배경엔 흰색 글자 */
-   }
+/* 6. 하단 버튼 크게 조절 */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  padding: 0 20px;
+}
 
-   /* 6. 하단 버튼 크게 조절 */
-   .btn-group {
-       display: flex;
-       justify-content: center;
-       gap: 20px;
-       margin-top: 50px;
-       padding: 0 20px;
-   }
+.btn-group button {
+  padding: 20px 40px;
+  font-size: 1.8rem;
+  /* 버튼 글자도 아주 크게 */
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #333;
+  background-color: white;
+  flex: 1;
+  max-width: 400px;
+}
 
-   .btn-group button {
-       padding: 20px 40px;
-       font-size: 1.8rem;
-       /* 버튼 글자도 아주 크게 */
-       font-weight: bold;
-       cursor: pointer;
-       border-radius: 10px;
-       border: 2px solid #333;
-       background-color: white;
-       flex: 1;
-       max-width: 400px;
-   }
-
-   /* 화면이 너무 작아질 때 (모바일 대비) */
-   @media (max-width: 600px) {
-       .navbar_ul li a {
-           font-size: 1.1rem;
-           padding: 15px 5px;
-       }
-   }
-
+/* 화면이 너무 작아질 때 (모바일 대비) */
+@media (max-width: 600px) {
+  .navbar_ul li a {
+    font-size: 1.1rem;
+    padding: 15px 5px;
+  }
+}

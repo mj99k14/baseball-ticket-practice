@@ -1,55 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>좌석 선택 - 야구 예매</title>
+    <link rel="stylesheet" href="../css/area-seat.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>좌석 선택 - 야구 예매</title>
-  <link rel="stylesheet" href="../css/area-seat.css">
-</head>
+  <body>
+    <h1>원하는 좌석을 눌러주세요</h1>
 
-<body>
-  <h1>원하는 좌석을 눌러주세요</h1>
-
-  <div class="legend">
-    <div class="legend-item">
-      <div class="box" style="background:#1aafff;"></div> 선택함
-    </div>
-    <div class="legend-item">
-      <div class="box" style="background:#ff7b1a;"></div> 선택불가
-    </div>
-    <div class="legend-item">
-      <div class="box" style="background:#d1d1d1;"></div> 선택가능
-    </div>
-  </div>
-
-  <div class="main-container">
-    <div id="grid"></div>
-
-    <div class="sidebar">
-      <div class="logo-area">
-        <img src="./baseballlog.png" alt="구단 로고">
+    <div class="legend">
+      <div class="legend-item">
+        <div class="box" style="background: #1aafff"></div>
+        선택함
       </div>
-
-      <div class="nav-info" onclick="location.href='Select-Seat.html'">〈 이전으로</div>
-
-      <div class="status-area">
-        <h2>선택한 좌석</h2>
-        <div id="seat-count">좌석을 선택해 주세요</div>
+      <div class="legend-item">
+        <div class="box" style="background: #ff7b1a"></div>
+        선택불가
       </div>
+      <div class="legend-item">
+        <div class="box" style="background: #d1d1d1"></div>
+        선택가능
+      </div>
+    </div>
 
-      <div class="btn-group">
-        <button id="selectCompletion">좌석 선택 완료</button>
-        <div class="bottom-btns">
-          <button onclick="location.href='Select-Seat.html'">이전단계</button>
-          <button onclick="window.location.reload()">다시 선택</button>
+    <div class="main-container">
+      <div id="grid"></div>
+
+      <div class="sidebar">
+        <div class="logo-area">
+          <img src="./baseballlog.png" alt="구단 로고" />
+        </div>
+
+        <div class="nav-info" onclick="location.href = 'Select-Seat.html'">
+          〈 이전으로
+        </div>
+
+        <div class="status-area">
+          <h2>선택한 좌석</h2>
+          <div id="seat-count">좌석을 선택해 주세요</div>
+        </div>
+
+        <div class="btn-group">
+          <button id="selectCompletion">좌석 선택 완료</button>
+          <div class="bottom-btns">
+            <button onclick="location.href = 'Select-Seat.html'">
+              이전단계
+            </button>
+            <button onclick="window.location.reload()">다시 선택</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="../javascript/state.js" defer></script>
-  <script src="../javascript/SelectSeat.js" defer></script>
-</body>
-
+    <script src="../javascript/state.js" defer></script>
+    <script src="../javascript/SelectSeat.js" defer></script>
+  </body>
 </html>

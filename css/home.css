@@ -1,97 +1,97 @@
 /* 기본 배경 및 폰트 설정 */
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f8f9fa;
-    /* 굵고 명확한 폰트 사용 */
-    font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
-    overflow-x: hidden;
-    /* 가로 스크롤 방지 */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  /* 굵고 명확한 폰트 사용 */
+  font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  overflow-x: hidden;
+  /* 가로 스크롤 방지 */
 }
 
 /* 제목 스타일 - 더 크고 진하게 */
 h1 {
-    color: #072b61;
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    /* 반응형 글자 크기 */
-    margin-bottom: 30px;
-    font-weight: 900;
-    letter-spacing: -1px;
-    text-align: center;
+  color: #072b61;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  /* 반응형 글자 크기 */
+  margin-bottom: 30px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-align: center;
 }
 
 /* 이미지 스타일 - 화면의 70% 정도를 차지하게 크게 설정 */
 img {
-    width: 70%;
-    /* 화면 너비의 70% */
-    max-width: 800px;
-    /* PC에서도 너무 커지지 않게 제한 */
-    min-width: 300px;
-    /* 모바일에서도 너무 작아지지 않게 */
-    height: auto;
-    border: 5px solid white;
-    /* 액자 느낌 */
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
+  width: 70%;
+  /* 화면 너비의 70% */
+  max-width: 800px;
+  /* PC에서도 너무 커지지 않게 제한 */
+  min-width: 300px;
+  /* 모바일에서도 너무 작아지지 않게 */
+  height: auto;
+  border: 5px solid white;
+  /* 액자 느낌 */
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
 }
 
 /* 버튼 스타일 - 어르신들을 위해 매우 크고 명확하게 */
 #back {
-    background-color: #e30613;
-    color: white;
-    /* 패딩을 크게 주어 누르기 쉽게 */
-    padding: 25px 80px;
-    /* 반응형 폰트: 최소 1.5rem, 화면에 따라 최대 2.5rem */
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    font-weight: 800;
-    border: none;
-    border-radius: 100px;
-    /* 완전히 둥근 형태 */
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 8px 0 #b3050f;
-    /* 입체감 있는 버튼 (눌러보고 싶게) */
-    display: inline-block;
-    text-align: center;
+  background-color: #e30613;
+  color: white;
+  /* 패딩을 크게 주어 누르기 쉽게 */
+  padding: 25px 80px;
+  /* 반응형 폰트: 최소 1.5rem, 화면에 따라 최대 2.5rem */
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 800;
+  border: none;
+  border-radius: 100px;
+  /* 완전히 둥근 형태 */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 8px 0 #b3050f;
+  /* 입체감 있는 버튼 (눌러보고 싶게) */
+  display: inline-block;
+  text-align: center;
 }
 
 /* 버튼 효과 */
 #back:hover {
-    background-color: #ff1a1a;
-    transform: scale(1.05);
-    /* 마우스 올리면 살짝 커짐 */
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+  /* 마우스 올리면 살짝 커짐 */
 }
 
 #back:active {
-    transform: translateY(4px);
-    /* 클릭 시 버튼이 들어가는 효과 */
-    box-shadow: 0 4px 0 #b3050f;
+  transform: translateY(4px);
+  /* 클릭 시 버튼이 들어가는 효과 */
+  box-shadow: 0 4px 0 #b3050f;
 }
 
 /* 링크 영역 클릭 범위 확보 */
 a {
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    text-align: center;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 /* 반응형 미디어 쿼리 - 작은 화면(핸드폰)일 때 조정 */
 @media (max-width: 600px) {
-    img {
-        width: 90%;
-        /* 모바일에서는 더 크게 */
-    }
+  img {
+    width: 90%;
+    /* 모바일에서는 더 크게 */
+  }
 
-    #back {
-        width: 80%;
-        /* 모바일에서는 버튼을 길게 */
-        padding: 20px 0;
-    }
+  #back {
+    width: 80%;
+    /* 모바일에서는 버튼을 길게 */
+    padding: 20px 0;
+  }
 }
