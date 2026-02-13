@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint javascript/",
-    "validate-html": "for file in ./html/*.html; do html-validator --file \"$file\"; done",
-    "format:check": "prettier --check .",
-    "format": "prettier --write ."
+    "validate-html": "npx html-validator --file ./html/home.html && npx html-validator --file ./html/Completion.html && npx html-validator --file ./html/Seat-check-price.html && npx html-validator --file ./html/Select-date.html && npx html-validator --file ./html/Select-Delivery.html && npx html-validator --file ./html/Select-Seat-area.html && npx html-validator --file ./html/Select-Seat.html",
+    "format:check": "npx prettier --check .",
+    "format": "npx prettier --write ."
   },
   "devDependencies": {
     "eslint": "^9.0.0",
