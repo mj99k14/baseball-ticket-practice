@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const priceValue =(sessionStorage.getItem("Seatprice"));
   const gameDate = (sessionStorage.getItem("GameDate"));
 
-  //  만약 요소를 못 찾았다면 콘솔에 에러를 띄웁니다.
+  //  만약 요소를 못 찾았다면 콘솔에 에러를 띄움
   if (!dispalyCountSeat) {
     console.error("HTML 요소를 찾을 수 없습니다.");
     return; // 에러가 있으면 여기서 중단
