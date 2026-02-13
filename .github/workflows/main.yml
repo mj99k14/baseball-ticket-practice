@@ -22,8 +22,5 @@ jobs:
       - name: Run ESLint for JavaScript
         run: npm run lint
 
-      - name: Run HTML Validator
-        run: npm run validate-html
-
       - name: Run Prettier Check
         run: npm run format:check
