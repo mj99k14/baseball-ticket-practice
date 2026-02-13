@@ -11,11 +11,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run ESLint for JavaScript
         run: npm run lint
 
       - name: Run HTML Validator
         run: npm run validate-html
+
+      - name: Run Prettier Check
+        run: npm run format:check
