@@ -11,22 +11,37 @@
     <ul class="navbar_ul">
       <li><a href="Select-check-price.html">1. 가격 선택</a></li>
       <li class="active"><a href="#">2. 배송/주문 확인</a></li>
-      <li><a href="Completion-price.html">3. 결제하기</a></li>
+      <li><a href="Payment.html">3. 결제하기</a></li>
     </ul>
+    
+    <input type="radio" value="filed" id="filed" checked/>
+    <label for="filed">현장 수령</label>
+    <input type="radio" value="delivery" id="delivery" />
+    <label for="delivery">택배(3000원)</label>
+    <input type="radio" value="mobileticket" id="mobileticket" />
+    <label for="mobileticket">모바일 티켓</label>
+    
+    <div class="information">
+      <div class="match-tag"></div>
+      <div class="info-content">
+        <h1>My예매정보</h1>
+        <div id="Gamedate"></div>
+        <div id="seat-price1"></div>
+        <div id="seat-price2"></div>
+        <div id="commission">수수료</div>
+      </div>
 
-    <div id="seat-count">좌석</div>
-
-    <div class="btn-group">
-      <button onclick="location.href = 'Select-Seat-area.html'">
-        이전 단계
-      </button>
-      <button
-        onclick="location.href = 'Select-Delivery.html'"
-        style="background-color: #333; color: white"
-      >
-        다음 단계
-      </button>
+    
+      <div id="total-price-display" class="total-price-display">
+        총 결제금액: 0원
+      </div>
+    
+      <div class="btn-group">
+        <button onclick="history.back()">이전단계</button>
+        <button class="btn-next-step" onclick="location.href='Payment.html'">다음단계</button>
+      </div>
     </div>
+ 
     <script src="../javascript/state.js"></script>
     <script src="../javascript/SelectDelivery.js"></script>
   </body>
