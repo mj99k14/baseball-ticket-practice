@@ -1,4 +1,3 @@
-/* 1. 기본 설정: 글자를 큼직하게 */
 body {
   font-family: "Malgun Gothic", sans-serif;
   margin: 0;
@@ -6,7 +5,7 @@ body {
   background-color: #f4f4f4;
 }
 
-/* 2. 네비게이션 바: 창 너비에 꽉 차게 */
+/* 네비게이션 바 */
 .navbar_ul {
   display: flex;
   list-style: none;
@@ -14,7 +13,6 @@ body {
   margin: 0;
   width: 100%;
   background-color: #dcdcdc;
-  border-bottom: 2px solid #ccc;
 }
 
 .navbar_ul li {
@@ -24,15 +22,12 @@ body {
 
 .navbar_ul li a {
   display: block;
-  padding: 25px 10px;
-  font-size: 1.5rem;
+  padding: 20px;
   font-weight: bold;
-  color: #333;
   text-decoration: none;
-  word-break: keep-all;
+  color: #333;
 }
 
-/* 현재 단계 강조 (빨간색) */
 .navbar_ul li.active {
   background-color: #ff4d4d;
 }
@@ -41,58 +36,63 @@ body {
   color: white;
 }
 
-/* 3. 메인 레이아웃: 이미지 기반 구성 */
-.main-wrapper {
+/* 메인 컨테이너 (7:3 비율) */
+.main-container {
   display: flex;
-  max-width: 1200px;
-  margin: 20px auto;
+  max-width: 1100px;
+  margin: 30px auto;
   background-color: white;
+  min-height: 500px;
   border: 1px solid #ccc;
-  min-height: 600px;
 }
 
 /* 왼쪽 영역 */
 .content-left {
   flex: 7;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #ccc;
-}
-
-#seat-count {
-  background-color: #e0e0e0;
-  padding: 20px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  border-bottom: 1px solid #ccc;
-}
-
-.price-selection-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 25px;
-  background-color: #fce4ec;
-  /* 분홍색 배경 */
-  min-height: 200px;
-  font-size: 1.5rem;
-}
-
-.price-footer-info {
-  display: flex;
   padding: 40px;
-  gap: 80px;
-  margin-top: auto;
+  display: flex;
+  gap: 50px;
 }
 
-.price-footer-info div {
+.selection-section,
+.input-section {
+  flex: 1;
+}
+
+.section-title {
   font-size: 1.4rem;
-  line-height: 1.8;
+  border-bottom: 3px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.method-item {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.method-item input {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* 동적 input 스타일 */
+#input-container input {
+  display: block;
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 /* 오른쪽 정보 영역 */
 .information {
   flex: 3;
   background-color: #eee;
+  border-left: 1px solid #ccc;
   display: flex;
   flex-direction: column;
 }
@@ -100,42 +100,39 @@ body {
 .match-tag {
   background-color: #222;
   color: white;
-  text-align: center;
   padding: 15px;
-  font-size: 1.8rem;
+  text-align: center;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .info-content {
-  padding: 25px;
+  padding: 20px;
   flex-grow: 1;
 }
 
 .info-content h1 {
-  font-size: 1.6rem;
-  border-bottom: 5px solid #333;
+  font-size: 1.2rem;
+  border-bottom: 4px solid #333;
   padding-bottom: 10px;
-  margin-top: 0;
   margin-bottom: 20px;
 }
 
 .info-content div {
-  font-size: 1.3rem;
   margin-bottom: 15px;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .total-price-display {
-  background-color: #444;
+  background-color: #555;
   color: white;
   padding: 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin: 10px;
 }
 
-/* 하단 버튼 그룹 */
 .btn-group {
   display: flex;
   padding: 10px;
@@ -144,11 +141,10 @@ body {
 
 .btn-group button {
   flex: 1;
-  padding: 20px 10px;
-  font-size: 1.4rem;
+  padding: 15px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
   border: none;
 }
 
@@ -160,16 +156,4 @@ body {
 .btn-next-step {
   background-color: #ff4d4d;
   color: white;
-}
-
-/* 모바일 대응 */
-@media (max-width: 600px) {
-  .main-wrapper {
-    flex-direction: column;
-  }
-
-  .navbar_ul li a {
-    font-size: 1.1rem;
-    padding: 15px 5px;
-  }
 }

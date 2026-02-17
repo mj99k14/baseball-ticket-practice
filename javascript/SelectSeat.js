@@ -2,8 +2,9 @@
 const ROWS = 5;
 const COLS = 5;
 const TOTAL_SEATS = ROWS * COLS;
+const price = 14000;
 
-// 전역 변수 선언 (함수 밖에서 선언해야 모든 함수가 공유 가능합니다)
+// 전역 변수 선언
 let grid;
 let seatCount;
 let count = 0;
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("버튼 요소:", document.getElementById("selectCompletion"));
   console.log("카운트 요소:", document.getElementById("seat-count"));
 
-  // [체크] 만약 요소를 못 찾았다면 콘솔에 에러를 띄웁니다.
+  // 만약 요소를 못 찾았다면 콘솔에 에러를 띄웁니다.
   if (!grid || !selectCompletion || !seatCount) {
     console.error("HTML 요소를 찾을 수 없습니다. ID를 확인해 주세요!");
     return; // 에러가 있으면 여기서 중단
@@ -35,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("먼저 좌석을 선택해주세요");
     } else {
       //필요한 정보 저장
-      localStorage.setItem("selectedSeatCount", appState.seats.length);
+      sessionStorage.setItem("selectedSeatCount", appState.seats.length);
       location.href = "Seat-check-price.html";
     }
   });
@@ -80,6 +81,8 @@ function seatcolorchange(seat) {
 
         alert("선택되었습니다.");
         seatCount.textContent = `총 ${appState.seats.length}석`;
+        //가격저장
+        sessionStorage.setItem("Seatprice", appState.seats.length * price);
       } else {
         alert("최대 4매까지 가능합니다");
       }

@@ -4,54 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>배송/주문 확인</title>
-    <link rel="stylesheet" href="../css/delivery.css" />
+    <link rel="stylesheet" href="../css/payment.css" />
   </head>
 
   <body>
     <ul class="navbar_ul">
       <li><a href="Select-check-price.html">1. 가격 선택</a></li>
-      <li class="active"><a href="#">2. 배송/주문 확인</a></li>
-      <li><a href="Payment.html">3. 결제하기</a></li>
+      <li><a href="Select-Delivery.html">2. 배송/주문 확인</a></li>
+      <li class="active"><a href="#">3. 결제하기</a></li>
     </ul>
 
     <div class="main-container">
       <div class="content-left">
         <div class="selection-section">
-          <h2 class="section-title">티켓수령방법</h2>
+          <h2 class="section-title">결제 방법 선택</h2>
           <div class="radio-group">
             <div class="method-item">
               <input
                 type="radio"
-                name="delivery-option"
-                value="filed"
-                id="filed"
+                name="payment-option"
+                value="Creditcard"
+                id="Creditcard"
                 checked
               />
-              <label for="filed">현장 수령</label>
+              <label for="Credicard">신용카드</label>
             </div>
             <div class="method-item">
               <input
                 type="radio"
-                name="delivery-option"
-                value="delivery"
-                id="delivery"
+                name="payment-option"
+                value="bank"
+                id="bank"
               />
-              <label for="delivery">택배(3000원)</label>
-            </div>
-            <div class="method-item">
-              <input
-                type="radio"
-                name="delivery-option"
-                value="mobileticket"
-                id="mobileticket"
-              />
-              <label for="mobileticket">모바일 티켓</label>
+              <label for="bank">무통장입금</label>
             </div>
           </div>
         </div>
 
         <div class="input-section">
-          <h2 class="section-title">예매자 확인</h2>
+          <h2 class="section-title">결제수단 입력</h2>
           <div id="input-container"></div>
         </div>
       </div>
