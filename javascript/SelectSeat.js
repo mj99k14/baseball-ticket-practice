@@ -4,7 +4,7 @@ const COLS = 5;
 const TOTAL_SEATS = ROWS * COLS;
 const price = 14000;
 
-// 전역 변수 선언 
+// 전역 변수 선언
 let grid;
 let seatCount;
 let count = 0;
@@ -82,8 +82,7 @@ function seatcolorchange(seat) {
         alert("선택되었습니다.");
         seatCount.textContent = `총 ${appState.seats.length}석`;
         //가격저장
-        sessionStorage.setItem("Seatprice", appState.seats.length * price );
-        
+        sessionStorage.setItem("Seatprice", appState.seats.length * price);
       } else {
         alert("최대 4매까지 가능합니다");
       }
@@ -114,5 +113,3 @@ function alertnc(seat) {
         : "좌석을 선택해 주세요";
   }
 }
-
-

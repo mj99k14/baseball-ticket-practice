@@ -10,14 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameDate = sessionStorage.getItem("GameDate") || "날짜 정보 없음";
   const countValue = Number(sessionStorage.getItem("selectedSeatCount")) || 0;
 
-
   // 요소가 하나라도 없으면 중단
   if (!displayCountSeat || !displayTotalPrice) {
     console.error("필요한 HTML 요소를 찾을 수 없습니다. ID를 확인하세요.");
     return;
   }
 
-  const total = priceValue * countValue //총액
+  const total = priceValue * countValue; //총액
   // 글씨 집어넣기
   displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;
   displayGameData.textContent = `일시: ${gameDate}`;

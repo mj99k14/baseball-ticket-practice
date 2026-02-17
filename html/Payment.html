@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배송/주문 확인</title>
+    <link rel="stylesheet" href="../css/payment.css" />
+  </head>
+
+  <body>
+    <ul class="navbar_ul">
+      <li><a href="Select-check-price.html">1. 가격 선택</a></li>
+      <li><a href="Select-Delivery.html">2. 배송/주문 확인</a></li>
+      <li class="active"><a href="#">3. 결제하기</a></li>
+    </ul>
+
+    <div class="main-container">
+      <div class="content-left">
+        <div class="selection-section">
+          <h2 class="section-title">결제 방법 선택</h2>
+          <div class="radio-group">
+            <div class="method-item">
+              <input
+                type="radio"
+                name="payment-option"
+                value="Creditcard"
+                id="Creditcard"
+                checked
+              />
+              <label for="Credicard">신용카드</label>
+            </div>
+            <div class="method-item">
+              <input
+                type="radio"
+                name="payment-option"
+                value="bank"
+                id="bank"
+              />
+              <label for="bank">무통장입금</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-section">
+          <h2 class="section-title">결제수단 입력</h2>
+          <div id="input-container"></div>
+        </div>
+      </div>
+
+      <div class="information">
+        <div class="match-tag">LG VS 삼성</div>
+        <div class="info-content">
+          <h1>My예매정보</h1>
+          <div id="Gamedate">일시:</div>
+          <div id="countseat">선택좌석:</div>
+          <div id="seat-price1">티켓 금액: 0원</div>
+          <div id="commission">수수료: 0원</div>
+          <div id="deliveryprice">택배: 0원</div>
+        </div>
+
+        <div id="displayTotalPrice" class="total-price-display">
+          총 결제금액: 0원
+        </div>
+
+        <div class="btn-group">
+          <button type="button" onclick="history.back()">이전단계</button>
+          <button type="button" id="btn-next" class="btn-next-step">
+            다음단계
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../javascript/state.js"></script>
+    <script src="../javascript/SelectDelivery.js"></script>
+  </body>
+</html>

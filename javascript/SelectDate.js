@@ -24,18 +24,17 @@ games.forEach((game) => {
   item.addEventListener("click", () => {
     appState.date = game.date;
     //session에 저장
-    sessionStorage.setItem("GameDate",appState.date);
+    sessionStorage.setItem("GameDate", appState.date);
     appState.time = game.time;
-    sessionStorage.setItem("GameTime",appState.time);
+    sessionStorage.setItem("GameTime", appState.time);
     appState.home = game.home;
-    sessionStorage.setItem("GanmeHome",appState.home);
+    sessionStorage.setItem("GanmeHome", appState.home);
     appState.away = game.away;
-    sessionStorage.setItem("GanmeAway",appState.away);
+    sessionStorage.setItem("GanmeAway", appState.away);
 
-    sessionStorage.setItem("GameArea",appState.area);
+    sessionStorage.setItem("GameArea", appState.area);
     location.href = "Select-Seat.html";
   });
-  
-  list.appendChild(item);
 
+  list.appendChild(item);
 });

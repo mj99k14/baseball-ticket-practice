@@ -1,6 +1,9 @@
-
 //전역
-let displaySeatPrice1, displayTotalPrice, displayCommission, displayCountSeat, container;
+let displaySeatPrice1,
+  displayTotalPrice,
+  displayCommission,
+  displayCountSeat,
+  container;
 let deliveryprice, priceValue, countValue, commission;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -23,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // 다음페이지 넘어갈수있을지 없을지 판단
-  nextBtn.addEventListener('click', () => {
+  nextBtn.addEventListener("click", () => {
     if (check()) {
-      location.href = 'Payment.html';
+      location.href = "Payment.html";
     }
   });
 
@@ -38,19 +41,18 @@ document.addEventListener("DOMContentLoaded", function () {
   displayCommission.textContent = `수수료: ${commission}원`;
   console.log("데이터 로드 완료:", { countValue, priceValue, gameDate });
 
-  selectPay();// 호출
+  selectPay(); // 호출
 });
-
 
 function selectPay() {
   const filed = document.getElementById("filed");
   const delivery = document.getElementById("delivery");
   const mobileticket = document.getElementById("mobileticket");
-  const container = document.getElementById("input-container");// 사용자 input 받는것 
+  const container = document.getElementById("input-container"); // 사용자 input 받는것
   const deliveryprice = document.getElementById("deliveryprice");
   //티켓 총액 계산 (숫자로 변환해서 계산)
   const baseTotal = Number(priceValue) * countValue;
-  filed.addEventListener('click', () => {
+  filed.addEventListener("click", () => {
     // 현장 수령 & 모바일티켓
     // 이름 //생년월일 연락처 //이메일
     container.innerHTML = `
@@ -61,16 +63,15 @@ function selectPay() {
   `;
     //결제금액
     const total = baseTotal + commission;
-    displayTotalPrice.textContent = `총 걸제금액:${total.toLocaleString()}원`
+    displayTotalPrice.textContent = `총 걸제금액:${total.toLocaleString()}원`;
     sessionStorage.setItem("finalTotalPrice", total);
-
   });
 
   //배송을 누른 경우에는(displayCommission 3000원 추가)
   //총액도 3000원 플러스 저장되게
   //이름 연락처 주소
 
-  mobileticket.addEventListener('click', () => {
+  mobileticket.addEventListener("click", () => {
     // 현장 수령 & 모바일티켓
     // 이름 //생년월일 연락처 //이메일
     container.innerHTML = `
@@ -81,11 +82,11 @@ function selectPay() {
   `;
     //결제금액
     const total = baseTotal + commission;
-    displayTotalPrice.textContent = `총 걸제금액:${total.toLocaleString()}원`
+    displayTotalPrice.textContent = `총 걸제금액:${total.toLocaleString()}원`;
     sessionStorage.setItem("finalTotalPrice", total);
   });
 
-  delivery.addEventListener('click', () => {
+  delivery.addEventListener("click", () => {
     // 현장 수령 & 모바일티켓
     // 이름 //생년월일 연락처 //이메일
     container.innerHTML = `
@@ -96,8 +97,8 @@ function selectPay() {
      <input type="text" id="user-address" placeholder="주소">
   `;
     // 금액 계산
-    const total = baseTotal + commission + 3000
-    displayTotalPrice.textContent = `총 걸제금액:${total.toLocaleString()}원`
+    const total = baseTotal + commission + 3000;
+    displayTotalPrice.textContent = `총 걸제금액:${total.toLocaleString()}원`;
     sessionStorage.setItem("finalTotalPrice", total);
     deliveryprice.textContent = `3000원`;
   });
@@ -106,11 +107,11 @@ function selectPay() {
 //input요소에 다들어있는지 체크 함수
 function check() {
   const fields = {
-    "이름": document.getElementById("user-name"),
-    "연락처": document.getElementById("user-phone"),
-    "생년월일": document.getElementById("user-birthday"),
-    "이메일": document.getElementById("user-email"),
-    "주소": document.getElementById("user-address") // 배송일 때만 존재함
+    이름: document.getElementById("user-name"),
+    연락처: document.getElementById("user-phone"),
+    생년월일: document.getElementById("user-birthday"),
+    이메일: document.getElementById("user-email"),
+    주소: document.getElementById("user-address"), // 배송일 때만 존재함
   };
 
   // 객체의 키(key)들을 돌면서 검사
@@ -120,7 +121,7 @@ function check() {
     if (inputElement) {
       if (inputElement.value.trim() === "") {
         alert(`${key} 항목을 입력해주세요!`);
-        inputElement.focus();//사용자의 커서(입력창)를 강제로 그 위치로 이동시켜라"라는 뜻
+        inputElement.focus(); //사용자의 커서(입력창)를 강제로 그 위치로 이동시켜라"라는 뜻
         return false; // 하나라도 비었으면 즉시 종료
       }
     }
