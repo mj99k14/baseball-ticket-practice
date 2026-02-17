@@ -1,48 +1,52 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>배송/주문 확인</title>
-    <link rel="stylesheet" href="../css/check-price.css" />
-  </head>
 
-  <body>
-    <ul class="navbar_ul">
-      <li><a href="Select-check-price.html">1. 가격 선택</a></li>
-      <li class="active"><a href="#">2. 배송/주문 확인</a></li>
-      <li><a href="Payment.html">3. 결제하기</a></li>
-    </ul>
-    
-    <input type="radio" value="filed" id="filed" checked/>
-    <label for="filed">현장 수령</label>
-    <input type="radio" value="delivery" id="delivery" />
-    <label for="delivery">택배(3000원)</label>
-    <input type="radio" value="mobileticket" id="mobileticket" />
-    <label for="mobileticket">모바일 티켓</label>
-    
-    <div class="information">
-      <div class="match-tag"></div>
-      <div class="info-content">
-        <h1>My예매정보</h1>
-        <div id="Gamedate"></div>
-        <div id="seat-price1"></div>
-        <div id="seat-price2"></div>
-        <div id="commission">수수료</div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>배송/주문 확인</title>
+  <link rel="stylesheet" href="../css/check-price.css" />
+</head>
 
-    
-      <div id="total-price-display" class="total-price-display">
-        총 결제금액: 0원
-      </div>
-    
-      <div class="btn-group">
-        <button onclick="history.back()">이전단계</button>
-        <button class="btn-next-step" onclick="location.href='Payment.html'">다음단계</button>
-      </div>
+<body>
+  <ul class="navbar_ul">
+    <li><a href="Select-check-price.html">1. 가격 선택</a></li>
+    <li class="active"><a href="#">2. 배송/주문 확인</a></li>
+    <li><a href="Payment.html">3. 결제하기</a></li>
+  </ul>
+
+  <input type="radio" value="filed" id="filed" checked />
+  <label for="filed">현장 수령</label>
+  <input type="radio" value="delivery" id="delivery" />
+  <label for="delivery">택배(3000원)</label>
+  <input type="radio" value="mobileticket" id="mobileticket" />
+  <label for="mobileticket">모바일 티켓</label>
+
+  <div id="input-container"></div> <!--입력창-->
+
+  <div class="information">
+    <div class="match-tag"></div>
+    <div class="info-content">
+      <h1>My예매정보</h1>
+      <div id="Gamedate"></div>
+      <div id="seat-price1"></div>
+      <div id="seat-price2"></div>
+      <div id="commission"></div>
     </div>
- 
-    <script src="../javascript/state.js"></script>
-    <script src="../javascript/SelectDelivery.js"></script>
-  </body>
+
+
+    <div id="displayTotalPrice" class="total-price-display">
+      총 결제금액: 0원
+    </div>
+
+    <div class="btn-group">
+      <button onclick="history.back()">이전단계</button>
+      <button class="btn-next-step" onclick="location.href='Payment.html'">다음단계</button>
+    </div>
+  </div>
+
+  <script src="../javascript/state.js"></script>
+  <script src="../javascript/SelectDelivery.js"></script>
+</body>
+
 </html>
