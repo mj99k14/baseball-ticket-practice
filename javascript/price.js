@@ -15,13 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("필요한 HTML 요소를 찾을 수 없습니다. ID를 확인하세요.");
     return;
   }
-
-  const total = priceValue * countValue; //총액
   // 글씨 집어넣기
   displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;
   displayGameData.textContent = `일시: ${gameDate}`;
   displaySeatPrice1.textContent = `티켓 총액: ${Number(priceValue).toLocaleString()}원`;
-  displayTotalPrice.textContent = `총 결제금액: ${Number(total).toLocaleString()}원`;
+  displayTotalPrice.textContent = `총 결제금액: ${Number(priceValue).toLocaleString()}원`;
   sessionStorage.setItem("displayTotalPrice", displayTotalPrice);
   console.log("데이터 로드 완료:", { countValue, priceValue, gameDate });
 });
