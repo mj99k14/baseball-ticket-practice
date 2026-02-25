@@ -16,7 +16,7 @@
 //cvs(랜덤)
 
 
-console.log(sessionStorage.getItem("user-birthday", birthday));//생년월일 저장)
+// console.log(sessionStorage.getItem("user-birthday", birthday));//생년월일 저장)
 
 
 
