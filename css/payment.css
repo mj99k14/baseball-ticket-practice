@@ -157,3 +157,137 @@ body {
   background-color: #ff4d4d;
   color: white;
 }
+
+/* ============================= */
+/* 💳 연습용 카드 영역 */
+/* ============================= */
+
+.random-card-display-wrapper {
+  perspective: 1000px;
+  width: 340px;
+  margin-bottom: 25px;
+}
+
+.practice-card {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+/* 카드 뒤집기 */
+.practice-card.flip {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+}
+
+/* 카드 앞면 */
+.card-front {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 카드 칩 */
+.card-chip {
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(135deg, gold, orange);
+  border-radius: 6px;
+}
+
+/* 카드 번호 */
+.card-number {
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  font-family: "Courier New", monospace;
+  white-space: nowrap;
+}
+
+/* 카드 하단 */
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+/* 카드 브랜드 */
+.card-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+/* VISA 스타일 */
+.card-brand.visa {
+  color: #ffffff;
+}
+
+/* MASTER 스타일 */
+.card-brand.master {
+  color: #ffb347;
+}
+
+/* 카드 뒷면 */
+.card-back {
+  background: linear-gradient(135deg, #222, #444);
+  transform: rotateY(180deg);
+}
+
+.card-strip {
+  background: black;
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+.card-cvc-box {
+  background: white;
+  color: black;
+  padding: 5px;
+  width: 80px;
+  text-align: right;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+/* ============================= */
+/* 입력창 스타일 업그레이드 */
+/* ============================= */
+
+#input-container input {
+  display: block;
+  width: 340px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+#input-container input:focus {
+  border-color: #2a5298;
+  outline: none;
+  box-shadow: 0 0 6px rgba(42, 82, 152, 0.4);
+}
+
+/* 카드 안내문 */
+.random-card-display-note {
+  font-size: 0.9rem;
+  color: red;
+  margin-top: 8px;
+}

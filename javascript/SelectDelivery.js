@@ -1,10 +1,10 @@
-// [전역 변수 설정]
+// 전역 변수 설정
 let displayTotalPrice, priceValue, countValue, commission;
 
 document.addEventListener("DOMContentLoaded", function () {
   // 1. HTML 요소 가져오기
   const displaySeatPrice1 = document.getElementById("seat-price1"); // 티켓 총액 칸
-  const displayGameData = document.getElementById("Gamedate");
+  const displayGameData = document.getElementById("Gamedate");//게임날짜
   const displayCommission = document.getElementById("commission"); // 수수료 칸
   const displayCountSeat = document.getElementById("countseat"); // 선택 좌석수 칸
   const nextBtn = document.getElementById("btn-next"); // 다음 버튼
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   selectPay();
 });
 
-// [수령 방법 선택 및 금액 업데이트 함수]
+// 수령 방법 선택 및 금액 업데이트 함수
 function selectPay() {
   const filed = document.getElementById("filed");
   const delivery = document.getElementById("delivery");
@@ -100,7 +100,7 @@ function selectPay() {
   });
 }
 
-// [입력값 유효성 검사 함수]
+// 입력값 유효성 검사 함수
 function check() {
   const fields = {
     이름: document.getElementById("user-name"),

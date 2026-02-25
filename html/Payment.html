@@ -9,7 +9,7 @@
 
   <body>
     <ul class="navbar_ul">
-      <li><a href="Select-check-price.html">1. 가격 선택</a></li>
+      <li><a href="Seat-check-price.html">1. 가격 선택</a></li>
       <li><a href="Select-Delivery.html">2. 배송/주문 확인</a></li>
       <li class="active"><a href="#">3. 결제하기</a></li>
     </ul>
@@ -27,7 +27,7 @@
                 id="Creditcard"
                 checked
               />
-              <label for="Credicard">신용카드</label>
+              <label for="Creditcard">신용카드</label>
             </div>
             <div class="method-item">
               <input
@@ -44,11 +44,18 @@
         <div class="input-section">
           <h2 class="section-title">결제수단 입력</h2>
           <div id="input-container"></div>
+          <div id ="notice"></div>
         </div>
+      </div>
+      
+      <!--카드 선택시 랜덤 카드 -->
+      <div class ="random-card-number">
+        <h2>카드</h2>
+        <div id ="random-card-number"></div>
       </div>
 
       <div class="information">
-        <div class="match-tag">LG VS 삼성</div>
+        <div class="match-tag"></div>
         <div class="info-content">
           <h1>My예매정보</h1>
           <div id="Gamedate">일시:</div>
