@@ -4,7 +4,7 @@ let displayTotalPrice, priceValue, countValue, commission;
 document.addEventListener("DOMContentLoaded", function () {
   // 1. HTML 요소 가져오기
   const displaySeatPrice1 = document.getElementById("seat-price1"); // 티켓 총액 칸
-  const displayGameData = document.getElementById("Gamedate");//게임날짜
+  const displayGameData = document.getElementById("Gamedate"); //게임날짜
   const displayCommission = document.getElementById("commission"); // 수수료 칸
   const displayCountSeat = document.getElementById("countseat"); // 선택 좌석수 칸
   const nextBtn = document.getElementById("btn-next"); // 다음 버튼

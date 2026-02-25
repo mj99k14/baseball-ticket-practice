@@ -1,4 +1,3 @@
-
 // 전역 상태 변수
 let displayTotalPrice, priceValue, countValue, commission;
 let currentRandomCard = null;
@@ -28,17 +27,12 @@ function initPriceInfo() {
 
   displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;
   displayGameData.textContent = `일시: ${gameDate}`;
-  displaySeatPrice1.textContent =
-    `티켓 총액: ${(priceValue * countValue).toLocaleString()}원`;
-  displayCommission.textContent =
-    `수수료: ${commission.toLocaleString()}원`;
+  displaySeatPrice1.textContent = `티켓 총액: ${(priceValue * countValue).toLocaleString()}원`;
+  displayCommission.textContent = `수수료: ${commission.toLocaleString()}원`;
 
   const total = priceValue * countValue + commission;
-  displayTotalPrice.textContent =
-    `총 결제금액: ${total.toLocaleString()}원`;
+  displayTotalPrice.textContent = `총 결제금액: ${total.toLocaleString()}원`;
 }
-
-
 
 // 결제 방식 처리
 function checkPayment() {
@@ -47,7 +41,6 @@ function checkPayment() {
   const Bank = document.getElementById("bank");
   const notice = document.getElementById("notice");
   const nextBtn = document.getElementById("btn-next");
-
 
   // 카드 렌더링
   function renderCardForm() {
@@ -121,64 +114,52 @@ function checkPayment() {
   if (Card.checked) renderCardForm();
 
   // 결제 버튼 처리
-nextBtn.addEventListener("click", () => {
-  if (isLocked) return;
-  if (Card.checked) {
+  nextBtn.addEventListener("click", () => {
+    if (isLocked) return;
+    if (Card.checked) {
+      const inputCard = document.getElementById("input-card-number").value;
 
-    const inputCard =
-      document.getElementById("input-card-number").value;
+      const inputValidity = document.getElementById("input-validity").value;
 
-    const inputValidity =
-      document.getElementById("input-validity").value;
+      const inputCvc = document.getElementById("input-cvc").value;
 
-    const inputCvc =
-      document.getElementById("input-cvc").value;
+      const inputBirthday = document.getElementById("input-birthday").value;
 
-    const inputBirthday =
-      document.getElementById("input-birthday").value;
+      const savedBirthday = sessionStorage.getItem("user-birthday") || "";
 
-    const savedBirthday =
-      sessionStorage.getItem("user-birthday") || "";
+      const cleanInputCard = inputCard.replace(/\s/g, "");
 
-    const cleanInputCard =
-      inputCard.replace(/\s/g, "");
+      const cleanSavedCard = currentRandomCard.cardNumber.replace(/\s/g, "");
 
-    const cleanSavedCard =
-      currentRandomCard.cardNumber.replace(/\s/g, "");
+      const cleanInputValidity = inputValidity.replace(/[^0-9]/g, "");
 
-    const cleanInputValidity =
-      inputValidity.replace(/[^0-9]/g, "");
+      const cleanSavedValidity = currentRandomCard.validity.replace(
+        /[^0-9]/g,
+        "",
+      );
 
-    const cleanSavedValidity =
-      currentRandomCard.validity.replace(/[^0-9]/g, "");
+      const cleanInputCvc = inputCvc.trim();
 
-    const cleanInputCvc =
-      inputCvc.trim();
+      const cleanSavedCvc = String(currentRandomCard.cvc).trim();
 
-    const cleanSavedCvc =
-      String(currentRandomCard.cvc).trim();
+      const cleanInputBirthday = inputBirthday.replace(/[^0-9]/g, "");
 
-    const cleanInputBirthday =
-      inputBirthday.replace(/[^0-9]/g, "");
+      const cleanSavedBirthday = savedBirthday.replace(/[^0-9]/g, "");
 
-    const cleanSavedBirthday =
-      savedBirthday.replace(/[^0-9]/g, "");
-
-    if (
-      cleanInputCard === cleanSavedCard &&
-      cleanInputValidity === cleanSavedValidity &&
-      cleanInputCvc === cleanSavedCvc &&
-      cleanInputBirthday === cleanSavedBirthday
-    ) {
-      handleSuccess();
+      if (
+        cleanInputCard === cleanSavedCard &&
+        cleanInputValidity === cleanSavedValidity &&
+        cleanInputCvc === cleanSavedCvc &&
+        cleanInputBirthday === cleanSavedBirthday
+      ) {
+        handleSuccess();
+      } else {
+        handleFail();
+      }
     } else {
-      handleFail();
+      alert("무통장 입금 신청 완료");
     }
-
-  } else {
-    alert("무통장 입금 신청 완료");
-  }
-});;
+  });
 
   // 성공 처리
   function handleSuccess() {
@@ -208,11 +189,9 @@ nextBtn.addEventListener("click", () => {
   }
 }
 
-
 // 실시간 카드번호 포맷팅
 function setupLiveFormatting() {
-  const cardInput =
-    document.getElementById("input-card-number");
+  const cardInput = document.getElementById("input-card-number");
   cardInput.addEventListener("input", (e) => {
     const formatted =
       e.target.value
@@ -224,39 +203,25 @@ function setupLiveFormatting() {
   });
 }
 
-
-
 // CVC 입력 시 카드 뒤집기
 function setupFlip() {
-  const cvcInput =
-    document.getElementById("input-cvc");
-  const card =
-    document.getElementById("practice-card");
-  cvcInput.addEventListener("focus", () =>
-    card.classList.add("flip")
-  );
-  cvcInput.addEventListener("blur", () =>
-    card.classList.remove("flip")
-  );
+  const cvcInput = document.getElementById("input-cvc");
+  const card = document.getElementById("practice-card");
+  cvcInput.addEventListener("focus", () => card.classList.add("flip"));
+  cvcInput.addEventListener("blur", () => card.classList.remove("flip"));
 }
-
 
 // 랜덤 카드 생성
 function generateRandomCard() {
-  const cardNumber =
-    Array.from({ length: 4 }, () =>
-      Math.floor(1000 + Math.random() * 9000)
-    ).join(" ");
+  const cardNumber = Array.from({ length: 4 }, () =>
+    Math.floor(1000 + Math.random() * 9000),
+  ).join(" ");
 
-  const month =
-    String(Math.floor(Math.random() * 12) + 1)
-      .padStart(2, "0");
+  const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, "0");
 
-  const year =
-    Math.floor(Math.random() * 5) + 25;
+  const year = Math.floor(Math.random() * 5) + 25;
 
-  const cvc =
-    Math.floor(100 + Math.random() * 900);
+  const cvc = Math.floor(100 + Math.random() * 900);
 
   return {
     cardNumber,
