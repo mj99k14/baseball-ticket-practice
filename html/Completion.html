@@ -9,12 +9,12 @@
   <body>
     <div class="wrapper">
       <h1>고객님의 결제가 정상적으로 완료되었습니다</h1>
-  
+
       <div class="card">
         <div class="card-header">
           예매 번호: <span id="reservationNumber"></span>
         </div>
-  
+
         <div class="card-body">
           <div class="row">
             <span>좌석:</span>
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      
+
       <!--완료 모달-->
       <div id="modal" class="modal">
         <div class="modal-content">
@@ -38,12 +38,10 @@
           <button id="modalClose">확인</button>
         </div>
       </div>
-  
-      <button id="back" onclick="location.href='home.html'">
-        처음으로
-      </button>
+
+      <button id="back" onclick="location.href = 'home.html'">처음으로</button>
     </div>
-  
+
     <script src="../javascript/state.js"></script>
     <script src="../javascript/completion.js"></script>
   </body>

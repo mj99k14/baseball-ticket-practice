@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  // 기본 정보 출력 
+  // 기본 정보 출력
   const reservation = document.getElementById("reservationNumber");
   const countseat = document.getElementById("countseat");
   const count = document.getElementById("count");
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const randomPart = Math.floor(1000 + Math.random() * 9000);
   reservation.textContent = "R" + datePart + randomPart;
 
-  // 모달 관련 
+  // 모달 관련
   const modal = document.getElementById("modal");
   const modalText = document.getElementById("modalText");
   const modalClose = document.getElementById("modalClose");
@@ -39,5 +38,4 @@ document.addEventListener("DOMContentLoaded", () => {
   modalClose.addEventListener("click", () => {
     modal.style.display = "none";
   });
-
 });
