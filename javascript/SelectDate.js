@@ -6,13 +6,9 @@ for (let i = 1; i <= 4; i++) {
   const gameDate = new Date();
   gameDate.setDate(today.getDate() + i);
 
-  const month = (gameDate.getMonth() + 1)
-    .toString()
-    .padStart(2, "0");
+  const month = (gameDate.getMonth() + 1).toString().padStart(2, "0");
 
-  const day = gameDate.getDate()
-    .toString()
-    .padStart(2, "0");
+  const day = gameDate.getDate().toString().padStart(2, "0");
 
   games.push({
     date: `${month}월${day}`,
