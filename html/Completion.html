@@ -4,12 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>완료</title>
+    <link rel="stylesheet" href="../css/completion.css" />
   </head>
   <body>
-    <h1>고객님의 결제가 정상적으로 완료되었습니다</h1>
-    <div class="complet">
-      <div id="Reservation number"></div>
-      <div id="seats"></div>
+    <div class="wrapper">
+      <h1>고객님의 결제가 정상적으로 완료되었습니다</h1>
+  
+      <div class="card">
+        <div class="card-header">
+          예매 번호: <span id="reservationNumber"></span>
+        </div>
+  
+        <div class="card-body">
+          <div class="row">
+            <span>좌석:</span>
+            <span id="countseat"></span>
+          </div>
+          <div class="row">
+            <span>매수:</span>
+            <span id="count"></span>
+          </div>
+          <div class="row total">
+            <span>총금액:</span>
+            <span id="displayTotalPrice"></span>
+          </div>
+        </div>
+      </div>
+      
+      <!--완료 모달-->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <p id="modalText"></p>
+          <button id="modalClose">확인</button>
+        </div>
+      </div>
+  
+      <button id="back" onclick="location.href='home.html'">
+        처음으로
+      </button>
     </div>
+  
+    <script src="../javascript/state.js"></script>
+    <script src="../javascript/completion.js"></script>
   </body>
 </html>
