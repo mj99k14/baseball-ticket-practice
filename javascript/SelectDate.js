@@ -1,9 +1,26 @@
-const games = [
-  { date: "01월10", time: "18:30", home: "LG", away: "삼성" },
-  { date: "01월11", time: "18:30", home: "LG", away: "두산" },
-  { date: "01월12", time: "18:30", home: "LG", away: "기아" },
-  { date: "01월13", time: "18:30", home: "LG", away: "넥센" },
-];
+//날짜 자동으로 생성
+const games = [];
+const today = new Date();
+
+for (let i = 1; i <= 4; i++) {
+  const gameDate = new Date();
+  gameDate.setDate(today.getDate() + i);
+
+  const month = (gameDate.getMonth() + 1)
+    .toString()
+    .padStart(2, "0");
+
+  const day = gameDate.getDate()
+    .toString()
+    .padStart(2, "0");
+
+  games.push({
+    date: `${month}월${day}`,
+    time: "18:30",
+    home: "LG",
+    away: ["삼성", "두산", "기아", "넥센"][i - 1],
+  });
+}
 
 const list = document.getElementById("game-list");
 
