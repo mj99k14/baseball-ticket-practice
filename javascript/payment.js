@@ -118,32 +118,21 @@ function checkPayment() {
     if (isLocked) return;
     if (Card.checked) {
       const inputCard = document.getElementById("input-card-number").value;
-
       const inputValidity = document.getElementById("input-validity").value;
-
       const inputCvc = document.getElementById("input-cvc").value;
-
       const inputBirthday = document.getElementById("input-birthday").value;
-
       const savedBirthday = sessionStorage.getItem("user-birthday") || "";
-
       const cleanInputCard = inputCard.replace(/\s/g, "");
-
       const cleanSavedCard = currentRandomCard.cardNumber.replace(/\s/g, "");
-
       const cleanInputValidity = inputValidity.replace(/[^0-9]/g, "");
-
       const cleanSavedValidity = currentRandomCard.validity.replace(
         /[^0-9]/g,
         "",
       );
 
       const cleanInputCvc = inputCvc.trim();
-
       const cleanSavedCvc = String(currentRandomCard.cvc).trim();
-
       const cleanInputBirthday = inputBirthday.replace(/[^0-9]/g, "");
-
       const cleanSavedBirthday = savedBirthday.replace(/[^0-9]/g, "");
 
       if (
@@ -218,9 +207,7 @@ function generateRandomCard() {
   ).join(" ");
 
   const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, "0");
-
   const year = Math.floor(Math.random() * 5) + 25;
-
   const cvc = Math.floor(100 + Math.random() * 900);
 
   return {
