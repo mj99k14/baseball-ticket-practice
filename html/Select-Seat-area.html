@@ -10,6 +10,7 @@
   <body>
     <h1>원하는 좌석을 눌러주세요</h1>
 
+    <!-- 좌석 상태 설명 -->
     <div class="legend">
       <div class="legend-item">
         <div class="box" style="background: #1aafff"></div>
@@ -26,8 +27,20 @@
     </div>
 
     <div class="main-container">
-      <div id="grid"></div>
+      <!-- ===== 좌석 영역 ===== -->
+      <div class="seat-wrapper">
+        <div class="seat-area">
+          <h2>A구역</h2>
+          <div id="gridA" class="grid"></div>
+        </div>
 
+        <div class="seat-area">
+          <h2>B구역</h2>
+          <div id="gridB" class="grid"></div>
+        </div>
+      </div>
+
+      <!-- ===== 사이드바 ===== -->
       <div class="sidebar">
         <div class="logo-area">
           <img src="./baseballlog.png" alt="구단 로고" />
@@ -44,6 +57,7 @@
 
         <div class="btn-group">
           <button id="selectCompletion">좌석 선택 완료</button>
+
           <div class="bottom-btns">
             <button onclick="location.href = 'Select-Seat.html'">
               이전단계

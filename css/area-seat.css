@@ -1,184 +1,196 @@
-/* 전체 레이아웃 설정 */
+/* =========================================
+   1. 기본 설정
+========================================= */
 body {
   margin: 0;
-  padding: 20px;
-  background-color: #ffffff;
-  font-family:
-    "Pretendard",
-    -apple-system,
-    sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 40px;
+  background-color: #f4f6f9;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
+/* 제목 */
 h1 {
-  font-size: 2.5rem;
-  color: #333;
+  font-size: 52px;
+  font-weight: 900;
+  color: #1e3a8a;
+  text-align: center;
   margin-bottom: 30px;
-  font-weight: 800;
 }
 
-/* [1] 상단 좌석 범례 (선택됨, 선택불가, 가능) */
+/* =========================================
+   2. 좌석 상태 설명
+========================================= */
 .legend {
   display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
-  padding: 20px 40px;
-  background: #f8f9fa;
-  border-radius: 15px;
-  border: 2px solid #eee;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 60px;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  font-size: 1.5rem;
-  /* 글자 크게 */
-  font-weight: bold;
+  gap: 12px;
 }
 
 .box {
-  width: 35px;
-  height: 35px;
-  border-radius: 5px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
 }
 
-/* [2] 메인 컨텐츠 영역 (좌석 + 사이드바 가로 배치) */
+/* =========================================
+   3. 전체 레이아웃 (가로 일자 핵심)
+========================================= */
 .main-container {
   display: flex;
-  flex-direction: row;
-  gap: 50px;
-  align-items: flex-start;
   justify-content: center;
+  /* 전체 중앙 정렬 */
+  align-items: flex-start;
+  gap: 100px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1700px;
+  margin: 0 auto;
 }
 
-/* 좌석 그리드 - 칸을 대폭 키움 */
-#grid {
+/* A/B 구역 가로 정렬 */
+.seat-wrapper {
+  display: flex;
+  flex-direction: row;
+  /* 🔥 핵심 */
+  gap: 100px;
+}
+
+/* 각 구역 */
+.seat-area {
+  width: 480px;
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  border: 4px solid #1e3a8a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-area h2 {
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+/* =========================================
+   4. 좌석 그리드
+========================================= */
+.grid {
   display: grid;
-  grid-template-columns: repeat(5, 70px);
-  /* 40px에서 70px로 확대 */
-  gap: 15px;
-  padding: 30px;
-  background: #eeeeee;
-  border-radius: 15px;
+  grid-template-columns: repeat(5, 80px);
+  gap: 20px;
 }
 
 .seat {
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-  font-size: 1.4rem;
-  /* 좌석 번호 잘 보이게 */
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.1s;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* 좌석 상태별 색상 (이미지 기준) */
+/* 상태 */
 .seat.selectable {
-  background-color: #d1d1d1;
-  color: #333;
+  background: #d1d1d1;
 }
 
-/* 가능 (회색) */
 .seat.selected {
-  background-color: #1aafff;
+  background: #1aafff;
   color: white;
 }
 
-/* 선택 (파랑) */
 .seat.disabled {
-  background-color: #ff7b1a;
+  background: #ff7b1a;
   color: white;
   cursor: not-allowed;
 }
 
-/* 불가 (주황) */
-
-/* [3] 우측 사이드바 디자인 */
+/* =========================================
+   5. 사이드바
+========================================= */
 .sidebar {
   width: 350px;
-  border: 6px solid #d1d1d1;
+  background: white;
+  padding: 35px;
+  border-radius: 25px;
+  border: 4px solid #1e3a8a;
   display: flex;
   flex-direction: column;
-  background: white;
+  gap: 30px;
 }
 
 .logo-area {
-  padding: 20px;
   text-align: center;
 }
 
 .logo-area img {
-  width: 180px;
+  width: 140px;
 }
 
-/* 파란색 안내 바 */
 .nav-info {
-  background-color: #1aafff;
+  background: #1e3a8a;
   color: white;
-  padding: 15px;
-  font-size: 1.6rem;
-  font-weight: bold;
+  padding: 18px;
+  font-size: 22px;
+  font-weight: 900;
+  border-radius: 15px;
   text-align: center;
   cursor: pointer;
 }
 
-/* 선택 현황 영역 */
 .status-area {
-  padding: 40px 20px;
-  background: #eeeeee;
+  background: #f4f6f9;
+  padding: 25px;
+  border-radius: 18px;
   text-align: center;
-  min-height: 150px;
 }
 
-.status-area h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #555;
+.status-area h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
 }
 
 #seat-count {
-  font-size: 1.8rem;
+  font-size: 30px;
   font-weight: 900;
-  color: #000;
-}
-
-/* 하단 버튼 그룹 */
-.btn-group {
-  display: flex;
-  flex-direction: column;
 }
 
 #selectCompletion {
-  background-color: #1aafff;
-  color: white;
-  padding: 25px;
-  font-size: 1.8rem;
+  height: 80px;
+  font-size: 24px;
   font-weight: 900;
+  background: #0052cc;
+  color: white;
   border: none;
+  border-radius: 18px;
   cursor: pointer;
 }
 
 .bottom-btns {
   display: flex;
-  background: #d1d1d1;
+  gap: 15px;
 }
 
 .bottom-btns button {
   flex: 1;
-  padding: 15px;
-  background: none;
+  height: 55px;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 12px;
   border: none;
-  font-size: 1.2rem;
-  font-weight: bold;
   cursor: pointer;
 }
