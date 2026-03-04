@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   //기본 정보
   const reservation = document.getElementById("reservationNumber");
-  const countseat = document.getElementById("countseat"); // 좌석 번호 표시용
+  const selectedSeatsEl = document.getElementById("selectedSeats");
   const count = document.getElementById("count");
   const totalprice = document.getElementById("displayTotalPrice");
 
   // 세션에서 값 꺼내기
   const seatCount = sessionStorage.getItem("selectedSeatCount");
-  const finalPrice = sessionStorage.getItem("Seatprice");
+  const finalPrice = sessionStorage.getItem("finalTotalPrice");
   const selectedSeats = JSON.parse(sessionStorage.getItem("selectedSeats"));
 
   //선택 좌석 표시
   if (selectedSeats && selectedSeats.length > 0) {
-    countseat.textContent = selectedSeats.join(", ");
+    selectedSeatsEl.textContent = selectedSeats.join(", ");
   } else {
-    countseat.textContent = "좌석 정보 없음";
+    selectedSeatsEl.textContent = "좌석 정보 없음";
   }
 
   // 매수 표시

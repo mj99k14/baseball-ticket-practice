@@ -82,6 +82,7 @@ function checkPayment() {
     `;
 
     notice.textContent = "";
+    notice.style.display = "none";
 
     setupLiveFormatting();
     setupFlip();
@@ -106,6 +107,7 @@ function checkPayment() {
     `;
     notice.textContent =
       "은행에 따라 밤 11시 30분 이후 온라인 입금이 제한될 수 있습니다.";
+    notice.style.display = "block";
   }
 
   // 이벤트 등록
