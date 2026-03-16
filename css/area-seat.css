@@ -180,16 +180,23 @@ h1 {
   font-weight: 900;
 }
 
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 #selectCompletion {
+  width: 100%;
   height: 80px;
   font-size: 28px;
   font-weight: 900;
-  background: #0052cc;
+  background: #d90000;
   color: white;
   border: none;
   border-radius: 18px;
   cursor: pointer;
-  box-shadow: 0 6px 0 rgba(0, 52, 150, 0.7);
+  box-shadow: 0 6px 0 rgba(150, 0, 0, 0.7);
   transition: background-color 0.2s;
 }
 
@@ -217,6 +224,12 @@ h1 {
   cursor: pointer;
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3);
   transition: background-color 0.2s;
+  background-color: #666;
+  color: white;
+}
+
+.bottom-btns button:hover {
+  background-color: #888;
 }
 
 .bottom-btns button:active {
