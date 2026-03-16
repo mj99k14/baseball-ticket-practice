@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameDate = session.gameDate;
   commission = COMMISSION_FEE;
 
+  // match-tag 채우기
+  const matchTag = document.querySelector(".match-tag");
+  if (matchTag) matchTag.textContent = `${session.gameHome} VS ${session.gameAway}`;
+
   // 3. 초기 화면 데이터 표시
   if (displayCountSeat)
     displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;

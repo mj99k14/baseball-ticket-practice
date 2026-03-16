@@ -1,5 +1,4 @@
 // ===== 상수 =====
-const COMMISSION_FEE = 3000;
 const MAX_FAIL_COUNT = 3;
 const REDIRECT_DELAY_MS = 1500;
 
@@ -36,6 +35,10 @@ function initPriceInfo() {
 
   const total = priceValue + COMMISSION_FEE;
   displayTotalPrice.textContent = `총 결제금액: ${total.toLocaleString()}원`;
+
+  // match-tag 채우기
+  const matchTag = document.querySelector(".match-tag");
+  if (matchTag) matchTag.textContent = `${session.gameHome} VS ${session.gameAway}`;
 }
 
 // ===== 결제 수단 선택 이벤트 등록 =====
@@ -53,7 +56,8 @@ function setupPaymentMethods() {
     if (cardRadio.checked) {
       validateAndPay(nextBtn);
     } else {
-      alert("무통장 입금 신청 완료");
+      alert("무통장 입금 신청이 완료되었습니다.");
+      location.href = "Completion.html";
     }
   });
 }

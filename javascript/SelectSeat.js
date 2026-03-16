@@ -2,7 +2,7 @@
 const ROWS = 5;
 const COLS = 5;
 const TOTAL_SEATS = ROWS * COLS;
-const SEAT_PRICE = 14000;
+const SEAT_PRICE = Number(sessionStorage.getItem("SeatUnitPrice")) || 14000;
 const MAX_SEAT_COUNT = 4;
 const DISABLED_RATIO = 0.2;
 

@@ -1,27 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 요소를 가져올 때 ID가 확실히 있는지 확인하세요.
   const displayCountSeat = document.getElementById("seat-count");
-  const selectedSeatsDiv = document.getElementById("selected-seats"); // 좌석번호
-  const displaySeatPrice1 = document.getElementById("seat-price1"); // 티켓 총액 칸
+  const selectedSeatsDiv = document.getElementById("selected-seats");
+  const displaySeatPrice1 = document.getElementById("seat-price1");
+  const displayCommission = document.getElementById("commission");
   const displayGameData = document.getElementById("Gamedate");
-  const displayTotalPrice = document.getElementById("total-price-display"); // 하단 검정 박스
+  const displayTotalPrice = document.getElementById("total-price-display");
+  const unitPriceDisplay = document.getElementById("unit-price-display");
+  const matchTag = document.querySelector(".match-tag");
 
-  // 데이터 가져오기
-  const { seatPrice: priceValue, seatCount: countValue, gameDate, selectedSeats } = getBookingSession();
+  const { seatPrice, seatUnitPrice, seatCount, gameDate, gameHome, gameAway, selectedSeats } =
+    getBookingSession();
 
-  // 요소가 하나라도 없으면 중단
   if (!displayCountSeat || !displayTotalPrice) {
     console.error("필요한 HTML 요소를 찾을 수 없습니다. ID를 확인하세요.");
     return;
   }
-  // 글씨 집어넣기
-  displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;
-  displayGameData.textContent = `일시: ${gameDate}`;
-  displaySeatPrice1.textContent = `티켓 총액: ${priceValue.toLocaleString()}원`;
-  //좌석 번호 표시
-  if (selectedSeats && selectedSeats.length > 0) {
+
+  // match-tag
+  if (matchTag) matchTag.textContent = `${gameHome} VS ${gameAway}`;
+
+  // 좌석 단가
+  if (unitPriceDisplay) unitPriceDisplay.textContent = `${seatUnitPrice.toLocaleString()}원`;
+
+  displayCountSeat.textContent = `총 ${seatCount}석 선택하셨습니다.`;
+  if (displayGameData) displayGameData.textContent = `일시: ${gameDate}`;
+  if (displaySeatPrice1) displaySeatPrice1.textContent = `티켓 총액: ${seatPrice.toLocaleString()}원`;
+  if (displayCommission) displayCommission.textContent = `수수료: ${COMMISSION_FEE.toLocaleString()}원`;
+
+  // 좌석 번호 표시
+  if (selectedSeatsDiv && selectedSeats.length > 0) {
     selectedSeatsDiv.textContent = `선택 좌석: ${selectedSeats.join(", ")}`;
   }
-  displayTotalPrice.textContent = `총 결제금액: ${priceValue.toLocaleString()}원`;
-  console.log("데이터 로드 완료:", { countValue, priceValue, gameDate });
+
+  const total = seatPrice + COMMISSION_FEE;
+  displayTotalPrice.textContent = `총 결제금액: ${total.toLocaleString()}원`;
 });

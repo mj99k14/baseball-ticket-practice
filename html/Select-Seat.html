@@ -76,6 +76,7 @@
           // appState가 정의되어 있는지 확인 후 저장
           if (typeof appState !== "undefined") {
             appState.price = price;
+            sessionStorage.setItem("SeatUnitPrice", price);
             location.href = "Select-Seat-area.html";
           } else {
             alert("상태 저장 파일(state.js)을 불러오지 못했습니다.");

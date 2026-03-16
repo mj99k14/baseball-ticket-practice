@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>가격 선택</title>
+    <title>가격 확인</title>
     <link rel="stylesheet" href="../css/check-price.css" />
   </head>
 
   <body>
     <ul class="navbar_ul">
-      <li class="active"><a href="#">가격 선택</a></li>
-      <li><a href="Select-Delivery.html">배송선택/주문자 확인</a></li>
-      <li><a href="Payment.html">결제하기</a></li>
+      <li class="active"><a href="#">1. 가격 확인</a></li>
+      <li><span>2. 배송/주문 확인</span></li>
+      <li><span>3. 결제하기</span></li>
     </ul>
 
     <div class="main-container">
@@ -22,7 +22,7 @@
             <div id="seat-count"></div>
             <div class="price-selection-item">
               <span>기본가 일반</span>
-              <span>14,000원</span>
+              <span id="unit-price-display">-</span>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
           <div id="Gamedate"></div>
           <div id="selected-seats"></div>
           <div id="seat-price1"></div>
-          <div id="seat-price2"></div>
+          <div id="commission"></div>
         </div>
 
         <div id="total-price-display" class="total-price-display">
@@ -69,6 +69,7 @@
       </div>
     </div>
 
+    <script src="../javascript/state.js"></script>
     <script src="../javascript/price.js"></script>
   </body>
 </html>

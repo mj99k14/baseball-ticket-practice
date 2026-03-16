@@ -18,8 +18,11 @@ window.MAX_SEAT_COUNT = 4;
 window.getBookingSession = function () {
   return {
     seatPrice: Number(sessionStorage.getItem("Seatprice")) || 0,
+    seatUnitPrice: Number(sessionStorage.getItem("SeatUnitPrice")) || 14000,
     seatCount: Number(sessionStorage.getItem("selectedSeatCount")) || 0,
     gameDate: sessionStorage.getItem("GameDate") || "날짜 정보 없음",
+    gameHome: sessionStorage.getItem("GanmeHome") || "LG",
+    gameAway: sessionStorage.getItem("GanmeAway") || "",
     selectedSeats: JSON.parse(sessionStorage.getItem("selectedSeats")) || [],
   };
 };
