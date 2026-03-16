@@ -12,25 +12,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // 전역 변수에 할당 (selectPay 함수에서 사용)
   displayTotalPrice = document.getElementById("displayTotalPrice");
 
-  // 2. 세션 데이터 가져오기 (숫자로 변환)
-  priceValue = Number(sessionStorage.getItem("Seatprice")) || 0;
-  countValue = Number(sessionStorage.getItem("selectedSeatCount")) || 0;
-  const gameDate = sessionStorage.getItem("GameDate") || "날짜 정보 없음";
-  commission = 3000; // 기본 수수료
+  // 2. 세션 데이터 가져오기
+  const session = getBookingSession();
+  priceValue = session.seatPrice;
+  countValue = session.seatCount;
+  const gameDate = session.gameDate;
+  commission = COMMISSION_FEE;
 
   // 3. 초기 화면 데이터 표시
   if (displayCountSeat)
     displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;
   if (displayGameData) displayGameData.textContent = `일시: ${gameDate}`;
   if (displaySeatPrice1) {
-    displaySeatPrice1.textContent = `티켓 총액: ${(priceValue * countValue).toLocaleString()}원`;
+    displaySeatPrice1.textContent = `티켓 총액: ${priceValue.toLocaleString()}원`;
   }
   if (displayCommission)
     displayCommission.textContent = `수수료: ${commission.toLocaleString()}원`;
 
   // 초기 총 결제 금액 설정
   if (displayTotalPrice) {
-    const initialTotal = priceValue * countValue + commission;
+    const initialTotal = priceValue + commission;
     displayTotalPrice.textContent = `총 결제금액: ${initialTotal.toLocaleString()}원`;
   }
 
@@ -61,7 +62,7 @@ function selectPay() {
   const container = document.getElementById("input-container");
   const deliveryprice = document.getElementById("deliveryprice");
 
-  const baseTotal = priceValue * countValue; // 티켓 가격 * 수량
+  const baseTotal = priceValue; // Seatprice는 이미 단가 * 수량의 총액
 
   // 공통 입력 폼 HTML
   const commonInputs = `
@@ -71,33 +72,24 @@ function selectPay() {
     <input type="text" id="user-email" placeholder="이메일">
   `;
 
-  // 현장 수령
-  filed.addEventListener("click", () => {
-    container.innerHTML = commonInputs;
-    const total = baseTotal + commission;
-    displayTotalPrice.textContent = `총 결제금액: ${total.toLocaleString()}원`;
-    sessionStorage.setItem("finalTotalPrice", total);
-    if (deliveryprice) deliveryprice.textContent = "0원";
-  });
+  // 수령 방법 선택 시 금액·폼 업데이트 (deliveryFee: 배송비, 기본 0)
+  function applyDeliveryOption(deliveryFee = 0) {
+    const extraInput =
+      deliveryFee > 0
+        ? `<input type="text" id="user-address" placeholder="주소">`
+        : "";
+    container.innerHTML = commonInputs + extraInput;
 
-  // 모바일 티켓
-  mobileticket.addEventListener("click", () => {
-    container.innerHTML = commonInputs;
-    const total = baseTotal + commission;
+    const total = baseTotal + commission + deliveryFee;
     displayTotalPrice.textContent = `총 결제금액: ${total.toLocaleString()}원`;
     sessionStorage.setItem("finalTotalPrice", total);
-    if (deliveryprice) deliveryprice.textContent = "0원";
-  });
+    if (deliveryprice)
+      deliveryprice.textContent = deliveryFee > 0 ? `${deliveryFee.toLocaleString()}원` : "0원";
+  }
 
-  // 배송 (배송비 3000원 추가)
-  delivery.addEventListener("click", () => {
-    container.innerHTML =
-      commonInputs + `<input type="text" id="user-address" placeholder="주소">`;
-    const total = baseTotal + commission + 3000;
-    displayTotalPrice.textContent = `총 결제금액: ${total.toLocaleString()}원`;
-    sessionStorage.setItem("finalTotalPrice", total);
-    if (deliveryprice) deliveryprice.textContent = "3000원";
-  });
+  filed.addEventListener("click", () => applyDeliveryOption());
+  mobileticket.addEventListener("click", () => applyDeliveryOption());
+  delivery.addEventListener("click", () => applyDeliveryOption(DELIVERY_FEE));
 }
 
 // 입력값 유효성 검사 함수

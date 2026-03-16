@@ -45,7 +45,6 @@ games.forEach((game) => {
     appState.away = game.away;
     sessionStorage.setItem("GanmeAway", appState.away);
 
-    sessionStorage.setItem("GameArea", appState.area);
     location.href = "Select-Seat.html";
   });
 

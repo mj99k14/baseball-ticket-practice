@@ -10,6 +10,10 @@ export default defineConfig([
       globals: {
         ...globals.browser,
         appState: true,
+        getBookingSession: true,
+        COMMISSION_FEE: true,
+        DELIVERY_FEE: true,
+        MAX_SEAT_COUNT: true,
       },
     },
   },

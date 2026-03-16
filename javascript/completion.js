@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 세션에서 값 꺼내기
   const seatCount = sessionStorage.getItem("selectedSeatCount");
-  const finalPrice = sessionStorage.getItem("finalTotalPrice");
+  const rawFinalPrice = sessionStorage.getItem("finalTotalPrice");
+  const seatPrice = Number(sessionStorage.getItem("Seatprice")) || 0;
+  // 배송 방법 미선택 시 Seatprice + 수수료(3000)로 대체
+  const finalPrice = rawFinalPrice !== null ? rawFinalPrice : seatPrice + 3000;
   const selectedSeats = JSON.parse(sessionStorage.getItem("selectedSeats"));
 
   //선택 좌석 표시

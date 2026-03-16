@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const displayTotalPrice = document.getElementById("total-price-display"); // 하단 검정 박스
 
   // 데이터 가져오기
-  const priceValue = sessionStorage.getItem("Seatprice") || "0";
-  const gameDate = sessionStorage.getItem("GameDate") || "날짜 정보 없음";
-  const countValue = Number(sessionStorage.getItem("selectedSeatCount")) || 0;
-  const selectedSeats = JSON.parse(sessionStorage.getItem("selectedSeats"));
+  const { seatPrice: priceValue, seatCount: countValue, gameDate, selectedSeats } = getBookingSession();
 
   // 요소가 하나라도 없으면 중단
   if (!displayCountSeat || !displayTotalPrice) {
@@ -20,12 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 글씨 집어넣기
   displayCountSeat.textContent = `총 ${countValue}석 선택하셨습니다.`;
   displayGameData.textContent = `일시: ${gameDate}`;
-  displaySeatPrice1.textContent = `티켓 총액: ${Number(priceValue).toLocaleString()}원`;
+  displaySeatPrice1.textContent = `티켓 총액: ${priceValue.toLocaleString()}원`;
   //좌석 번호 표시
   if (selectedSeats && selectedSeats.length > 0) {
     selectedSeatsDiv.textContent = `선택 좌석: ${selectedSeats.join(", ")}`;
   }
-  displayTotalPrice.textContent = `총 결제금액: ${Number(priceValue).toLocaleString()}원`;
-  sessionStorage.setItem("displayTotalPrice", displayTotalPrice);
+  displayTotalPrice.textContent = `총 결제금액: ${priceValue.toLocaleString()}원`;
   console.log("데이터 로드 완료:", { countValue, priceValue, gameDate });
 });
