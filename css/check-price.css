@@ -43,17 +43,22 @@ body {
     border-right: none;
 }
 
-.navbar_ul li a {
-    display: block;
-    padding: 25px 15px; /* 여백 넉넉하게 */
-    font-size: 28px; /* 버튼 텍스트 22~26px 이상 */
-    font-weight: 800; /* 얇은 글씨 금지 */
-    color: #555; /* 일반 단계 색상 */
-    text-decoration: none;
-    min-height: 60px; /* 최소 높이 60px 이상 */
+.navbar_ul li a,
+.navbar_ul li span {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 25px 15px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #555;
+    text-decoration: none;
+    min-height: 60px;
+}
+
+.navbar_ul li span {
+    color: #aaa;
+    cursor: default;
 }
 
 /* 현재 단계 강조 */

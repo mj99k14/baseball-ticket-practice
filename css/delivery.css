@@ -43,7 +43,8 @@ body {
     border-right: none;
 }
 
-.navbar_ul li a {
+.navbar_ul li a,
+.navbar_ul li span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,6 +54,11 @@ body {
     color: #555;
     text-decoration: none;
     min-height: 60px;
+}
+
+.navbar_ul li span {
+    color: #aaa;
+    cursor: default;
 }
 
 .navbar_ul li.active {
@@ -271,7 +277,7 @@ body {
     flex: 1;
     min-height: 70px;
     padding: 20px;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 800;
     cursor: pointer;
     border-radius: 15px;
